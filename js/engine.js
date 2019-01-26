@@ -37,6 +37,10 @@ function init()
 
 			draw.initRoom();
 
+			salon.begin();
+			couloir.begin();
+
+
 		//	alert("Chargé ! ");
 		}
 	}
