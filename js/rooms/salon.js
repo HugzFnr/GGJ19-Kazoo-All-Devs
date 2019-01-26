@@ -2,8 +2,8 @@ salon = {};
 rooms.salon = salon;
 
 
-salon.x = 200;
-salon.y = 50;
+salon.x = 100 + 0;
+salon.y = 80 + 0;
 
-salon.width = 400;
-salon.height = 500;
+salon.width = 200;
+salon.height = 400;
