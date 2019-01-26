@@ -39,6 +39,7 @@ function init()
 
 			salon.begin();
 			couloir.begin();
+			chambre.begin();
 
 
 		//	alert("Chargé ! ");
