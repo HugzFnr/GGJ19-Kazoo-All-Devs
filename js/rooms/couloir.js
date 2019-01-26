@@ -7,3 +7,16 @@ couloir.y = (80 + 150)*zoomRooms;
 
 couloir.width = 600*zoomRooms;
 couloir.height = 100*zoomRooms;
+
+
+//Le canvas
+couloir.cvs;
+
+
+couloir.begin = function()
+{
+  var contexte = couloir.cvs;
+
+
+
+}

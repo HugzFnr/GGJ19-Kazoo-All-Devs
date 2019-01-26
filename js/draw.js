@@ -1,5 +1,6 @@
 var draw = {},sprite={};
 
+
 draw.imgs = [];
 
 
