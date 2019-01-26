@@ -42,7 +42,7 @@ function init()
 			couloir.begin();
 			chambre.begin();
 			cuisine.begin();
-
+			toilettes.begin();
 
 		//	alert("Chargé ! ");
 		}
