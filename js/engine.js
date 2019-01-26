@@ -38,15 +38,17 @@ function init()
 	{
 		if(initAudio && initDraw)
 		{
-
+			
 			draw.initRoom();
 
 			salon.begin();
 			couloir.begin();
 			chambre.begin();
+			bains.begin();
 
 
-		//	alert("Chargé ! ");
+
+			//alert("Chargé ! ");
 		}
 	}
 

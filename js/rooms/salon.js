@@ -9,7 +9,7 @@ salon.y = (80 + 0)*zoomRooms;
 salon.width = 200*zoomRooms;
 salon.height = 400*zoomRooms;
 
-
+salon.timer;
 
 salon.begin = function()
 {
@@ -76,7 +76,7 @@ salon.begin = function()
 
     var canvas = salon.cvs;
 
-    var context = canvas.getContext("2d");
+    var context = salon.context =  canvas.getContext("2d");
     
     
     
@@ -87,12 +87,27 @@ salon.begin = function()
 
    var delta = 1000/60; // 60 fps trop ouf
    var frame = 0;
+   var vasesCasses = 0;
 
-
-   setInterval(function()
+   salon.timer = setInterval(function()
 {
     context.clearRect(0,0, canvas.width, canvas.height);
     frame++;
+
+        
+
+    if(direction == -1 && x2 != 0)
+    {
+        x2 += direction*2;
+    }
+
+    if(direction == 1 && x2 != salon.width - largeur2)
+    {
+        x2 += direction*2;
+    }
+
+    context.fillRect(x2, y2, largeur2, hauteur2);
+
 
     for(j=0;j<15;j++)
     {
@@ -112,6 +127,8 @@ salon.begin = function()
                 tableau[j].x = -largeur;
                 tableau[j].y = salon.height;
                 tableau[j].gravite = 0;
+
+                if(j==14) salon.end();
             }            
         else
         if (tableau[j].gravite == 1)
@@ -120,28 +137,31 @@ salon.begin = function()
             context.fillRect(tableau[j].x, tableau[j].y, largeur, hauteur);
         }
 
+        if(tableau[j].y >= salon.height - hauteur && tableau[j].gravite == 1)
+        {
+            vasesCasses++;
+        }
+
         if(tableau[j].y >= salon.height - hauteur)
         {
             tableau[j].gravite = 0;
             context.fillStyle = "red";
             context.fillRect(tableau[j].x, tableau[j].y, largeur, hauteur);
             context.fillStyle = "black";
+
+            if(j==14 || vasesCasses == 3) salon.end();
         }  
     }
-    
 
-    if(direction == -1 && x2 != 0)
-    {
-        x2 += direction*2;
-    }
-
-    if(direction == 1 && x2 != salon.width - largeur2)
-    {
-        x2 += direction*2;
-    }
-
-    context.fillRect(x2, y2, largeur2, hauteur2);
     
         
 }, delta);
+}
+
+salon.end = function(){
+
+    clearInterval(salon.timer);
+
+    salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
+
 }
