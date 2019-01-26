@@ -116,22 +116,17 @@ salon.begin = function()
         else
         if (tableau[j].gravite == 1)
         {
-            tableau[j].y+=2;
+            tableau[j].y+=3;
             context.fillRect(tableau[j].x, tableau[j].y, largeur, hauteur);
         }
 
-        if(tableau[j].y == salon.height - hauteur)
+        if(tableau[j].y >= salon.height - hauteur)
         {
             tableau[j].gravite = 0;
             context.fillStyle = "red";
             context.fillRect(tableau[j].x, tableau[j].y, largeur, hauteur);
             context.fillStyle = "black";
-        }
-        
-        
-            
-        
-        
+        }  
     }
     
 
