@@ -12,9 +12,6 @@ function colliding(a,b)// Retourne si il y a une collision entre deux box
 	return (a.x < b.x + b.w && a.x + a.w > b.x &&a.y < b.y + b.h && a.h + a.y > b.y)
 }
 
-
-
-
 function init()
 {
 
@@ -44,6 +41,7 @@ function init()
 			salon.begin();
 			couloir.begin();
 			chambre.begin();
+			cuisine.begin();
 
 
 		//	alert("Chargé ! ");
