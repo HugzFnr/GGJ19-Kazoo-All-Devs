@@ -8,12 +8,13 @@ salon.y = 80 + 0;
 salon.width = 200;
 salon.height = 400;
 
-var canvas = salon.cvs;
+//Le canvas
+salon.cvs;
 
 
 salon.begin = function()
 {
-
+  var contexte = salon.cvs;
 
 
 

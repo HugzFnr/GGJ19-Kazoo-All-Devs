@@ -8,12 +8,15 @@ couloir.y = 80 + 150;
 couloir.width = 250;
 couloir.height = 100;
 
-var canvas = couloir.cvs;
+
+
+//Le canvas
+couloir.cvs;
 
 
 couloir.begin = function()
 {
-
+  var contexte = couloir.cvs;
 
 
 
