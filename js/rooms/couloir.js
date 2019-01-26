@@ -2,8 +2,8 @@ couloir = {};
 rooms.couloir = couloir;
 
 
-couloir.x = 100 + 550;
-couloir.y = 80 + 150;
+couloir.x = (100 + 200)*zoomRooms;
+couloir.y = (80 + 150)*zoomRooms;
 
-couloir.width = 250;
-couloir.height = 100;
+couloir.width = 600*zoomRooms;
+couloir.height = 100*zoomRooms;
