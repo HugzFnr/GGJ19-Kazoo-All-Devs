@@ -44,7 +44,7 @@ function init()
 			salon.begin();
 			couloir.begin();
 			chambre.begin();
-
+			toilettes.begin();
 
 		//	alert("Chargé ! ");
 		}
