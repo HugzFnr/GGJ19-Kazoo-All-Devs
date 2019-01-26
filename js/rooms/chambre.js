@@ -7,3 +7,10 @@ chambre.y = (80 + 250)*zoomRooms;
 
 chambre.width = 300*zoomRooms;
 chambre.height = 150*zoomRooms;
+
+
+
+chambre.begin = function()
+{
+
+}

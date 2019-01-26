@@ -6,7 +6,13 @@ function shuffle(r){for(var a=r.length-1;a>0;a--){var f=Math.floor(Math.random()
 
 var hidden = qs("invisible");
 
-
+/*
+    if (ballon.x < ballon2.x + ballon2.width &&
+        ballon.x + ballon.width > ballon2.x &&
+        ballon.y < ballon2.y + ballon2.height &&
+        ballon.height + ballon.y > ballon2.y)
+        {
+    */
 
 
 
@@ -39,6 +45,7 @@ function init()
 
 			salon.begin();
 			couloir.begin();
+			chambre.begin();
 
 
 		//	alert("Chargé ! ");
