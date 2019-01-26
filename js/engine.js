@@ -6,13 +6,11 @@ function shuffle(r){for(var a=r.length-1;a>0;a--){var f=Math.floor(Math.random()
 
 var hidden = qs("invisible");
 
-/*
-    if (ballon.x < ballon2.x + ballon2.width &&
-        ballon.x + ballon.width > ballon2.x &&
-        ballon.y < ballon2.y + ballon2.height &&
-        ballon.height + ballon.y > ballon2.y)
-        {
-    */
+
+function colliding(a,b)// Retourne si il y a une collision entre deux box
+{// ATTENTION : les box doivent avoir des attributs x,y,w,h pas de width ni height !
+	return (a.x < b.x + b.w && a.x + a.w > b.x &&a.y < b.y + b.h && a.h + a.y > b.y)
+}
 
 
 
