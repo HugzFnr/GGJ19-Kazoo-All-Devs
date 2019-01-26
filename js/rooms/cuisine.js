@@ -2,8 +2,8 @@ cuisine = {};
 rooms.cuisine = cuisine;
 
 
-cuisine.x = 150;
-cuisine.y = 40;
+cuisine.x = 300;
+cuisine.y = 80;
 
 cuisine.width = 200;
 cuisine.height = 100;
