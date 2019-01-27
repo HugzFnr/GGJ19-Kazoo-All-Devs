@@ -106,12 +106,8 @@ bains.begin = function()
         {
             bains.end();
         }
-<<<<<<< HEAD
-
-=======
 
         if(!bains.playing) bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
->>>>>>> fab0c78ab8ed8bf6eb0a6f9d7f338aa80abfa4c9
 
     },delta);
 
