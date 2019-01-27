@@ -4,7 +4,8 @@ var draw = {},sprite={};
 
 draw.imgs = ["interieur","AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
 "KevinTientVase","LegoOrange","LegoRose","Vase","VasePete","smoke1","smoke2","smoke3","smoke4","smoke5",
-"DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44","bullePenseeKevin", "bullePenseeParent"];
+"DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44","bullePenseeKevin",
+"bullePenseeParent","KevinChambre1","KevinChambre2"];
 
 
 draw.init = function(callb)
