@@ -4,11 +4,9 @@ var manager = {};
 
 
 var entropy = 0; // game ends when it reaches 100
-var score = 0; //PROPOSITION : le score prend +10*minutesSurvécues par seconde et +400*(jeuxactifsenmêmetemps) à chaque mini jeu réussi
-var deltaCycle = 20000; //PROPOSITION : l'intervalle entre deux spawns d'event est de 20s et accélère progressivement
+var score = 0; 
+var deltaCycle = 21000; 
 var cycles = 0; //game's length
-
-//NOUS FAUT UN ECRAN DE FIN = VICTOIRE PCK YA PAS DE DEFAITE EN FAIT
 
 manager.boredTimer;
 manager.boredInterval = 10000;
@@ -18,7 +16,6 @@ manager.themeTimer;
 manager.timers = [];
 manager.themes =
 {
-
 
 }
 
@@ -65,7 +62,6 @@ manager.checkBored = function()
   {
     manager.playRandGame();
   }
-
 }
 
 
@@ -140,7 +136,7 @@ manager.missed = function(name)
   room.ctx.clearRect(0,0,room.width,room.height);
   room.cvs.onclick = null;
   room.cvs.style.backgroundColor = "";
-  manager.addEntropy(5);
+  manager.addEntropy(10);
 
 }
 
@@ -158,13 +154,13 @@ manager.playRandGame = function()
 
 manager.wingame = function()
 {
-  score+=400;
+  addScore(400);
   console.log("score :" + score);
 }
 
 manager.loosegame = function()
 {
-  manager.addEntropy(3);
+  manager.addEntropy(6);
 }
 
 manager.missgame = function()
