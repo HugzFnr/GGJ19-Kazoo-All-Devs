@@ -7,10 +7,13 @@ bains.y = (80 + 0)*zoomRooms;
 bains.width = 350*zoomRooms;
 bains.height = 150*zoomRooms;
 
+bains.timer;
+
 var frame = 0;
 var delta = 1000/60; // 60 fps trop ouf
 var robinet;
 
+//remplissage ON / OFF
 shortcut.add("F",function() 
     {
         robinet = 1;
@@ -51,7 +54,7 @@ bains.begin = function()
 
     var remplissage = 0;
     var jauge = 0;
-    setInterval( function()
+    bains.timer = setInterval( function()
     {
         //context.clearRect(0,0, canvas.width, canvas.height);
         frame++;
@@ -92,10 +95,20 @@ bains.begin = function()
             context.fillStyle = "black";
         }
         else {}
-
+        
+        if(frame >= 1800)
+        {
+            bains.end();
+        }
         
 
     },delta);
     
+}
+
+bains.end = function(){
+    clearInterval(bains.timer);
+
+    bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
 }
 
