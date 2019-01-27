@@ -13,18 +13,40 @@ var cycles = 0; //game's length
 
 manager.boredTimer;
 manager.boredInterval = 2000;
-manager.waitingTime = 3000;
+manager.waitingTime = 7000;
 
+manager.themeTimer;
 manager.timers = [];
+manager.themes =
+{
 
+
+}
 
 manager.start = function()
 {
 
 
   manager.newCycle();
-
   manager.boredTimer = setInterval(manager.checkBored, manager.boredInterval)
+
+  sound.musicNOEVENT.loop = true;
+  sound.musicNOEVENT.volume = 0.6;
+  sound.musicNOEVENT.replay();
+  manager.themeTimer = setInterval(function()
+  {
+    for(i in rooms)
+    {
+      var room = rooms[i];
+
+      if(room.playing && room.theme.paused)
+      {
+        room.theme.replay();
+      }
+
+    }
+
+  },7000)
 
 }
 
@@ -74,7 +96,11 @@ manager.getState = function()
 manager.alert = function(name)
 {
     var room = rooms[name];
+
+    console.log(room);
+    room.alerte.replay();
     room.cvs.style.backgroundColor = "red";
+
 
     room.cvs.onclick = function()
     {
@@ -82,6 +108,7 @@ manager.alert = function(name)
         rooms[name].begin();
         clearInterval(manager.timers[name]);
 
+        room.alerte.pause();
         room.cvs.style.backgroundColor = "white";
 
     }
@@ -100,6 +127,7 @@ manager.alert = function(name)
 manager.missed = function(name)
 {
   var room = rooms[name];
+  room.alerte.pause();
   room.cvs.onclick = null;
   room.cvs.style.backgroundColor = "white";
 }

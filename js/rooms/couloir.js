@@ -1,7 +1,11 @@
 couloir = {};
 rooms.couloir = couloir;
 
-
+couloir.init = function()
+{
+rooms.couloir.theme   =  sound.musicCouloir;
+rooms.couloir.alerte  =  sound.BruitPleure;
+}
 couloir.x = (100 + 200)*zoomRooms;
 couloir.y = (80 + 150)*zoomRooms;
 
@@ -152,6 +156,7 @@ function endGame(end)
     clearInterval(spawn);
     ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
     couloir.playing=false;
+    couloir.theme.pause();
 }
 
 }

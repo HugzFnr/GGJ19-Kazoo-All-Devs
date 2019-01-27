@@ -1,7 +1,10 @@
 chambre = {};
 rooms.chambre = chambre;
-
-
+chambre.init = function()
+{
+rooms.chambre.theme   =  sound.musicChambre;
+rooms.chambre.alerte  =  sound.BruitHelp;
+}
 chambre.x = (100 + 500)*zoomRooms;
 chambre.y = (80 + 250)*zoomRooms;
 
@@ -212,4 +215,5 @@ chambre.end = function(win)
   chambre.playing = false;
   clearTimeout(chambre.timer);
   clearTimeout(chambre.timerMax);
+  chambre.theme.pause();
 }

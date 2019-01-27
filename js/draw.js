@@ -43,6 +43,7 @@ draw.initRoom = function()
 		for(var i in rooms)
 		{
 			var room = rooms[i];
+			rooms[i].init();
 			var cvs = dc("canvas");
 
 			cvs.width = room.width;
@@ -56,8 +57,9 @@ draw.initRoom = function()
 			cvs.style.padding = '0px';
 			cvs.style.margin = '0px';
 
-			room.ctx = cvs.getContext("2d");
+		//	cvs.style.backgroundImage = "url("+sprite[i].src+")";
 
+			room.ctx = cvs.getContext("2d");
 			map.appendChild(cvs);
 
 

@@ -1,13 +1,10 @@
 var audio = {},sound = {},songs={};
 
-audio.list = [];
+audio.list = ["BruitBaignoire","BruitHelp","BruitPleure","BruitVaseCassé","BruitVentouse","EventBain","EventCuisine","EventSalon","EventToilet","Gameover2","GameOverContinue","GameOverEntropie","GameOvereventdynam","musicBain","musicChambre","musicCouloir","musicCuisine","musicIntrokazoo","musicNOEVENT","musicNoEventKAZOO","musicSalon","musicToilettes"];
 audio.songs = []; //Songs : Quand on en joue une nouvelle, on éteint l'ancienne
 audio.init = function(callb)
 {
-	audio.load(audio.list,function()
-	{
-		audio.loadsongs(callb);
-	});
+	audio.load(audio.list,callb);
 }
 
 audio.load = function(arr,callb)
@@ -15,17 +12,24 @@ audio.load = function(arr,callb)
 	for(var i = 0,loads=0;i<arr.length;i++)
 	{
 		var sfx = new Audio();
-		sfx.addEventListener("canplaythryough",loaded,false);
+		sfx.addEventListener("canplaythrough",loaded,false);
 		sfx.preload = "auto";
 		ext = (~arr[i].indexOf(".")) ? "": ".mp3";
 		sfx.src = "sound/"+arr[i]+ext;
-		sound[arr[i].split(".")[0]] = hid.appendChild(sfx);
+
+		sfx.replay = function()
+		{
+			this.currentTime = 0;
+			this.play();
+		}
+
+
+		sound[arr[i].split(".")[0]] = invisible.appendChild(sfx);
 	}
 
 	function loaded()
 	{
-		loads++
-
+		loads++;
 		if(loads == arr.length)callb();
 	}
 
@@ -33,32 +37,8 @@ audio.load = function(arr,callb)
 
 }
 
-audio.loadsongs = function(callb)
-{
-	arr = audio.songs;
-	for(var i = 0,loads=0;i<arr.length;i++)
-	{
-		var sfx = new Audio();
-		sfx.addEventListener("canplaythrough",loaded,false);
-		sfx.preload = "auto";
-		sfx.src = "sound/songs/"+arr[i]+".mp3"
-		sfx.loop = true;
-		songs[arr[i]] = hid.appendChild(sfx);
 
-	}
-
-	function loaded()
-	{
-		loads++
-		if(loads == arr.length)callb();
-	}
-
-	if(arr.length == 0)callb();
-
-}
-
-songs.last = "";
-
+/*
 songs.play = function(name)
 {
 	if(songs.last != "")
@@ -80,11 +60,10 @@ songs.stop = function()
 	}
 	last.pause();
 }
-
-
+*/
+/*
 songs.fade = function(callb)
 {
-	last = songs[songs.last]
 
 	if(!last)
 	{
@@ -144,3 +123,4 @@ songs.fadein = function(name,callb)
 	}
 	step();
 }
+*/
