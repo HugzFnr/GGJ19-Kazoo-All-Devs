@@ -161,7 +161,9 @@ toilettes.begin = function()
     toilettes.answered = true;
     ctx.strokeStyle = "green";
     ctx.strokeText("V",120,120);
-    //setTimeout(generate,lilDelta)
+
+    setTimeout(generate,switchDelta)
+
   }
 
 
