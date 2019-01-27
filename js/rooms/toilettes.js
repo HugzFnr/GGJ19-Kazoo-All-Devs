@@ -49,7 +49,7 @@ toilettes.begin = function()
 
     shortcut.add(toilettes.letters[i],f)
 
-    
+
   var delta = 1000/60; // 60 fps trop ouf
   var frame = 0;
   toilettes.timer = setInterval(function()
@@ -63,12 +63,12 @@ toilettes.begin = function()
 
 
     if(frame%200 <= 100 && toilettes.playing)
+
+
       ctx.drawImage(sprite.ChiottesVentouseHaute, 
         160, 
         12, 
-        sprite.ChiottesVentouseHaute.width/2, 
-        sprite.ChiottesVentouseHaute.height/2);
-    
+        sprite.ChiottesVentouseHaute.width/2, );
     else
     if(frame%200 >= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentousePlonge, 
@@ -94,8 +94,9 @@ toilettes.begin = function()
         sprite[toilettes.KEY+"2"].height);
     }
 
+
     //rooms.chambre.begin()
-    
+
   },delta);
 
   }
