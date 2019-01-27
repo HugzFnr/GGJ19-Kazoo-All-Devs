@@ -44,9 +44,13 @@ function init()
 			salon.begin();
 			couloir.begin();
 			chambre.begin();
+<<<<<<< HEAD
 			bains.begin();
 
 
+=======
+			toilettes.begin();
+>>>>>>> 3d112e73b8239a5387ff4547f3b8cf4a8376ba99
 
 			//alert("Chargé ! ");
 		}
