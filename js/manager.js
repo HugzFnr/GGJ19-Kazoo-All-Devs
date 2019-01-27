@@ -31,7 +31,7 @@ manager.start = function()
   manager.boredTimer = setInterval(manager.checkBored, manager.boredInterval)
 
   sound.musicNOEVENT.loop = true;
-  sound.musicNOEVENT.volume = 0.6;
+  sound.musicNOEVENT.volume = 0.4;
   sound.musicNOEVENT.replay();
   manager.themeTimer = setInterval(function()
   {
@@ -150,4 +150,19 @@ manager.wingame = function()
 
 manager.loosegame = function()
 {
+}
+
+manager.missgame = function()
+{
+
+}
+
+manager.addEntropy = function(e)
+{
+  entropy += e;
+}
+
+manager.addScore = function(s)
+{
+  score += s;
 }
