@@ -34,12 +34,13 @@ cuisine.begin = function ()
 {
 
   var ctx = cuisine.cvs.getContext("2d");
-  var left = true;
+
   var dangerLvl = 0; //goes up to 5 = lose
   var clicksNeeded = 5;
-  var deltaChange = 3000;
+  var deltaChange = 2500;
   var timeSpent=0;
 
+  var left = true;
   drawRect("blue",boxCook);
 
   var heatup = setInterval(function()
@@ -48,21 +49,23 @@ cuisine.begin = function ()
       clicksNeeded=5;
       updateSmoke(dangerLvl);
 
-  },deltaChange);
+  }, deltaChange);
 
   var frame = setInterval(function()
   {
     if (timeSpent>gameDur) endGame("WIN");
     timeSpent+=1000/30;
-  },deltaT);
+  }, deltaT);
 
-    cuisine.cvs.onclick = function() //faut pouvoir la désactiver à la fin
+    cuisine.cvs.onclick = function()
 {
     clicksNeeded--;
-    if (clicksNeeded<=0)
+    if (clicksNeeded<=0) 
+    {
     dangerLvl--;
     clicksNeeded=5;
     updateSmoke(dangerLvl);
+    }
     
     if (left)
     {
@@ -73,8 +76,6 @@ cuisine.begin = function ()
     drawRect("red",boxCook);
     left=true;
     }   
-
-    console.log(clicksNeeded);
 }
 
 function drawRect(color,box)
@@ -95,9 +96,10 @@ function updateSmoke(lvl)
 function endGame(end)
 {
     console.log(end + " CUISINE");
-    ctx.clearRect(0,0,cw,ch);
     clearInterval(heatup);
     clearInterval(frame);
+    cuisine.cvs.onclick = null;
+    ctx.clearRect(0,0,cw,ch);
 }
 
 }
