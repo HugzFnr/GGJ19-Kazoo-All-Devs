@@ -1,8 +1,7 @@
 var draw = {},sprite={};
 
 
-draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase","KevinTientVase","Vase","VasePete"];
-
+draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase","KevinTientVase","LegoOrange","LegoRose","Vase","VasePete"];
 
 
 draw.init = function(callb)
