@@ -10,9 +10,11 @@ salon.width = 200*zoomRooms;
 salon.height = 400*zoomRooms;
 
 salon.timer;
+salon.playing = false;
 
 salon.begin = function()
 {
+    salon.playing = true;
     var direction = 0;
 
     //vases
@@ -93,30 +95,17 @@ salon.begin = function()
     context.clearRect(0,0, canvas.width, canvas.height);
     frame++;        
 
-    if(direction == -1 && x2 != 0)
+    if(direction == -1 && x2 >= 0)
     {
         x2 += direction*2;
     }
 
-    if(direction == 1 && x2 != salon.width - largeurParent)
+    if(direction == 1 && x2 <= salon.width - largeurParent)
     {
         x2 += direction*2;
     }
 
-    //parent
-    //context.fillRect(x2, y2, largeurParent, hauteurParent);
-    if(frame%30 <= 15 && direction != 0)
-    {
-        context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, largeurParent, hauteurParent);
-    }    
-    else if(frame%30 > 15 && direction != 0)
-    {
-        context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, largeurParent, hauteurParent);
-    }
-    else
-    {
-        context.drawImage(sprite.AdulteBrasLeveCouleur, x2 ,y2, largeurParent, hauteurParent);
-    }
+    
 
     for(j=0;j<15;j++)
     {
@@ -163,9 +152,25 @@ salon.begin = function()
 
             if(j==14 || vasesCasses == 3) salon.end();
         }  
-    }
 
-    
+        //parent
+        //context.fillRect(x2, y2, largeurParent, hauteurParent);
+        if(frame%30 <= 15 && direction != 0)
+        {
+            context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, largeurParent, hauteurParent);
+        }    
+        else if(frame%30 > 15 && direction != 0)
+        {
+            context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, largeurParent, hauteurParent);
+        }
+        else
+        {
+            context.drawImage(sprite.AdulteBrasLeveCouleur, x2 ,y2, largeurParent, hauteurParent);
+        }
+        
+
+        if(!salon.playing) salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
+    }
         
 }, delta);
 }
@@ -175,5 +180,8 @@ salon.end = function(){
     clearInterval(salon.timer);
 
     salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
+
+    salon.playing = false;
+
 
 }
