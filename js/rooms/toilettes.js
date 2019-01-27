@@ -3,8 +3,8 @@ rooms.toilettes = toilettes;
 
 
 toilettes.init = function () {
-toilettes.theme   =  sound.musicToilettes;
-toilettes.alerte  =  sound.EventToilet;
+rooms.toilettes.theme   =  sound.musicToilettes;
+rooms.toilettes.alerte  =  sound.EventToilet;
 }
 
 toilettes.x = (100 + 550)*zoomRooms;
@@ -179,5 +179,5 @@ toilettes.end = function(win)
 
   toilettes.ctx.clearRect(0,0,toilettes.cvs.width,toilettes.cvs.height),
   toilettes.playing = false;
-
+  toilettes.theme.pause();
 }

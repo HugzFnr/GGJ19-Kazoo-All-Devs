@@ -3,8 +3,8 @@ rooms.salon = salon;
 
 salon.init = function()
 {
-  salon.theme = sound.musicSalon;
-  salon.alarme = sound.EventSalon;
+  rooms.salon.theme = sound.musicSalon;
+  rooms.salon.alarme = sound.EventSalon;
 
 }
 
@@ -207,5 +207,6 @@ salon.end = function(){
 
     salon.playing = false;
 
+    salon.theme.pause();
 
 }

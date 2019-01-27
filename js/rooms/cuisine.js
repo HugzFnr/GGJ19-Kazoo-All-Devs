@@ -6,8 +6,8 @@ cuisine.y = (80 + 250)*zoomRooms;
 
 cuisine.init = function()
 {
-cuisine.theme   =  sound.musicCuisine;
-cuisine.alerte  =  sound.EventCuisine;
+rooms.cuisine.theme   =  sound.musicCuisine;
+rooms.cuisine.alerte  =  sound.EventCuisine;
 }
 cuisine.width = 300*zoomRooms;
 cuisine.height = 150*zoomRooms;
@@ -108,6 +108,7 @@ function endGame(win)
     cuisine.cvs.onclick = null;
     ctx.clearRect(0,0,cw,ch);
     cuisine.playing = false;
+    cuisine.theme.pause();
 }
 
 }

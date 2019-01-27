@@ -21,8 +21,8 @@ var robinet;
 
 bains.init = function()
 {
-  bains.theme = sound.musicBain;
-  bains.alerte = sound.EventBain;
+  rooms.bains.theme = sound.musicBain;
+rooms.bains.alerte = sound.EventBain;
 }
 
 
@@ -130,5 +130,6 @@ bains.end = function(){
     bains.playing = false;
     bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
 
+    bains.theme.pause();
     bains.playing = false
 }
