@@ -134,7 +134,7 @@ salon.begin = function()
         {
             if(frame == j*100)
             {
-                tableau[j].gravite = 1;
+                tableau[j].gravite = 2;
             }
 
             //détection de collision
@@ -142,7 +142,7 @@ salon.begin = function()
                 tableau[j].x + largeurVase > x2 &&
                 tableau[j].y < y2 + hauteurParent &&
                 tableau[j].y + hauteurVase > y2 &&
-                tableau[j].gravite == 1)
+                tableau[j].gravite == 2)
                 {
                     //tableau[j] = null; VOIR AVEC YOUNES
                     tableau[j].x = -largeurVase;
@@ -152,14 +152,14 @@ salon.begin = function()
                     if(j==14) salon.end();
                 }
             else
-            if (tableau[j].gravite == 1)
+            if (tableau[j].gravite == 2)
             {
                 tableau[j].y+=3;
                 //context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
                 context.drawImage(sprite.Vase, tableau[j].x , tableau[j].y, largeurVase, hauteurVase);
             }
 
-            if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 1)
+            if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 2)
             {
                 vasesCasses++;
             }

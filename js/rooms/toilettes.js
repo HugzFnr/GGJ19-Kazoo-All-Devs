@@ -105,6 +105,7 @@ toilettes.begin = function()
       PRESS = rand(0,3) > 0;
 
       toilettes.answered = false;
+      ctx.font = '24px Serif';
       write(( PRESS ? "" : "DON'T " )+ "PRESS "+KEY)
 
       //LAISSÉ PASSÉ
@@ -163,7 +164,8 @@ toilettes.begin = function()
   {
     toilettes.answered = true;
     ctx.fillStyle = "red";
-    ctx.fillText("X",120,120);
+    ctx.font = '40px Serif';
+    ctx.fillText("X",80,80);
 
     toilettes.life--;
 
@@ -181,13 +183,6 @@ toilettes.begin = function()
       setTimeout(generate,switchDelta);
     }
 
-    function valid()
-    {
-      toilettes.answered = true;
-      ctx.fillStyle = "green";
-      ctx.fillText("V",120,120);
-      setTimeout(generate,switchDelta)
-    }
 
 
   }
@@ -196,7 +191,8 @@ toilettes.begin = function()
   {
     toilettes.answered = true;
     ctx.fillStyle = "green";
-    ctx.fillText("V",120,120);
+    ctx.font = '40px Serif';
+    ctx.fillText("V",80,80);
 
     setTimeout(generate,switchDelta)
 
