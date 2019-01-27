@@ -38,13 +38,16 @@ function init()
 
 			draw.initRoom();
 
+
+			manager.start();
+		/*
 			salon.begin();
 			couloir.begin();
 			chambre.begin();
 			bains.begin();
 			cuisine.begin();
 			toilettes.begin();
-
+			*/
 			//alert("Chargé ! ");
 		}
 	}

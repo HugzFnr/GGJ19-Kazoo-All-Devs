@@ -5,7 +5,6 @@ draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCoule
 "KevinTientVase","LegoOrange","LegoRose","Vase","VasePete","smoke1","smoke2","smoke3","smoke4","smoke5",
 "DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44"];
 
-
 draw.init = function(callb)
 {
 	draw.load(draw.imgs,callb);
@@ -47,6 +46,7 @@ draw.initRoom = function()
 			cvs.height = room.height;
 			room.cvs = cvs;
 
+			cvs.id = i;
 			cvs.style.position = 'absolute';
 			cvs.style.left = room.x+'px';
 			cvs.style.top = room.y+'px';

@@ -43,11 +43,11 @@ var spawn = setInterval(function()
     var boxL = {
         x : cw*(19/20), //initial values for obstacles
         y : ch*(1/6) + rand(0,1)*60,
-        w : cw*(1/30), 
-        h : ch*(1/5), 
+        w : cw*(1/30),
+        h : ch*(1/5),
     }
     tabL.push({...boxL}); //deepcopy
-    
+
 }, deltaSpawn);
 
   var frame = setInterval(function()
@@ -60,7 +60,7 @@ var spawn = setInterval(function()
 
     else if (timeSpent>gameDur)
     {
-        endGame("WIN");       
+        endGame("WIN");
     }
 
     else {
@@ -70,11 +70,11 @@ var spawn = setInterval(function()
         boxP.y=ch/120 + pos*55 //UP AND DOWN
         ctx.fillRect(boxP.x,boxP.y,boxP.w,boxP.h);
         }
-        
+
         if (checkAllColli(tabL))
         {
             nbFails--;
-        }  
+        }
 
         updateLegos(tabL);
         timeSpent+=1000/30;
@@ -107,7 +107,7 @@ function checkCollision(rect1,rect2)
 	{
 		return false;
 	}
-	else 
+	else
 	{
 		return true;
 	}
@@ -130,7 +130,7 @@ function updateLegos(tab)
 {
     for(var iter=0;iter<tab.length;iter++)
     {
-        if (tab[iter]!=null && tab[iter].x<=20) 
+        if (tab[iter]!=null && tab[iter].x<=20)
         {
             tab[iter]= null;
         }
@@ -140,15 +140,14 @@ function updateLegos(tab)
 
         if (tab[iter].y>50) ctx.drawImage(sprite.LegoOrange, tab[iter].x,tab[iter].y);
         else ctx.drawImage(sprite.LegoRose, tab[iter].x,tab[iter].y)
-        
+
         }
-        
+
     }
 }
 
 function endGame(end)
 {
-    console.log(end + " COULOIR");
     clearInterval(frame);
     clearInterval(spawn);
     ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
@@ -156,5 +155,3 @@ function endGame(end)
 }
 
 }
-
-

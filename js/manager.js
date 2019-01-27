@@ -11,11 +11,20 @@ var cycles = 0; //game's length
 //NOUS FAUT UN ECRAN DE FIN = VICTOIRE PCK YA PAS DE DEFAITE EN FAIT
 
 
+manager.boredTimer;
+manager.boredInterval = 2000;
+manager.waitingTime = 3000;
+
+manager.timers = [];
+
+
 manager.start = function()
 {
 
 
   manager.newCycle();
+
+  manager.boredTimer = setInterval(manager.checkBored, manager.boredInterval)
 
 }
 
@@ -23,7 +32,20 @@ manager.start = function()
 manager.newCycle = function()
 {
   cycles++;
+
+  manager.playRandGame();
+
   setTimeout(manager.newCycle,deltaCycle);
+
+}
+
+manager.checkBored = function()
+{
+  var state = manager.getState();
+  if(state.playing.length == 0)
+  {
+    manager.playRandGame();
+  }
 
 }
 
@@ -39,7 +61,7 @@ manager.getState = function()
       playing.push(i);
     }
     else {
-    pause.push(i);
+    paused.push(i);
     }
   }
 
@@ -49,14 +71,55 @@ manager.getState = function()
 }
 
 
-manager.wingame = function()
+manager.alert = function(name)
 {
+    var room = rooms[name];
+    room.cvs.style.backgroundColor = "red";
+
+    room.cvs.onclick = function()
+    {
+        var name = this.id;
+        rooms[name].begin();
+        clearInterval(manager.timers[name]);
+
+        room.cvs.style.backgroundColor = "white";
+
+    }
+
+
+    manager.timers[name] =
+    setTimeout(function()
+    {
+        manager.missed(name);
+    },manager.waitingTime);
+
 
 
 }
 
+manager.missed = function(name)
+{
+  var room = rooms[name];
+  room.cvs.onclick = null;
+  room.cvs.style.backgroundColor = "white";
+}
+
+
+manager.playRandGame = function()
+{
+  var state = manager.getState();
+  if(state.paused.length > 0)
+  {
+    nextRoom = state.paused[rand(0,state.paused.length-1)];
+    //rooms[nextRoom].begin();
+    manager.alert(nextRoom);
+  }
+}
+
+manager.wingame = function()
+{
+}
+
 manager.loosegame = function()
 {
-
-
 }
