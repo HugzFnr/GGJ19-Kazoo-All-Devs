@@ -1,6 +1,12 @@
 salon = {};
 rooms.salon = salon;
 
+salon.init = function()
+{
+  salon.theme = sound.musicSalon;
+  salon.alarme = sound.EventSalon;
+
+}
 
 salon.x = (100 + 0)*zoomRooms;
 salon.y = (80 + 0)*zoomRooms;
@@ -49,7 +55,7 @@ salon.begin = function()
     var y2 = salon.height - hauteurParent - 4;
 
 
-    shortcut.add("Left",function() 
+    shortcut.add("Left",function()
     {
         direction = -1;
     },{
@@ -86,7 +92,7 @@ salon.begin = function()
     var canvas = salon.cvs;
 
     var context = salon.context =  canvas.getContext("2d");
-    
+
     //context.fillRect(x, y, largeurVase, hauteurVase);
     context.drawImage(sprite.Vase, x, y, largeurVase, hauteurVase);
 
@@ -110,7 +116,7 @@ salon.begin = function()
 
         if(frame%100 <= 50) context.drawImage(sprite.KevinLacheVase, xk , yk, lk, hk)
         else context.drawImage(sprite.KevinTientVase, xk , yk, lk, hk);
-               
+
         //déplacements parent
         if(direction == -1 && x2 >= 0)
         {
@@ -122,7 +128,7 @@ salon.begin = function()
             x2 += direction*2;
         }
 
-        
+
 
         for(j=0;j<15;j++)
         {
@@ -144,7 +150,7 @@ salon.begin = function()
                     tableau[j].gravite = 0;
 
                     if(j==14) salon.end();
-                }            
+                }
             else
             if (tableau[j].gravite == 1)
             {
@@ -166,14 +172,14 @@ salon.begin = function()
 
 
                 if(j==14 || vasesCasses == 3) salon.end();
-            }  
+            }
 
             //affichage parent
             //context.fillRect(x2, y2, largeurParent, hauteurParent);
             if(frame%30 <= 15 && direction != 0)
             {
                 context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, largeurParent, hauteurParent);
-            }    
+            }
             else if(frame%30 > 15 && direction != 0)
             {
                 context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, largeurParent, hauteurParent);
@@ -189,7 +195,7 @@ salon.begin = function()
         }
 
 
-            
+
     }, delta);
     }
 
@@ -203,4 +209,3 @@ salon.end = function(){
 
 
 }
-
