@@ -160,6 +160,7 @@ manager.missgame = function()
 manager.addEntropy = function(e)
 {
   entropy += e;
+  draw.entropy();
 }
 
 manager.addScore = function(s)

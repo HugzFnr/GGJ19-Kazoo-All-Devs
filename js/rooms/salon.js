@@ -107,6 +107,18 @@ salon.begin = function()
     {
         context.clearRect(0,0, canvas.width, canvas.height);
         frame++;
+        
+        //affichage fleches UI
+        if(frame%20<=10){
+            context.drawImage(sprite.left1, 10 , salon.height/2, sprite.left1.width, sprite.left1.height);
+            context.drawImage(sprite.right1, salon.width - sprite.right1.width -10, salon.height/2, sprite.right1.width, sprite.right1.height);
+
+        }
+        else{
+            context.drawImage(sprite.left2, 10 , salon.height/2, sprite.left2.width, sprite.left2.height);
+            context.drawImage(sprite.right2, salon.width - sprite.right2.width - 10, salon.height/2, sprite.right2.width, sprite.right2.height);
+
+        }
 
         //déplacements de kevin
         if(xk + lk >= salon.width && vk >= 0) vk = -vk;
