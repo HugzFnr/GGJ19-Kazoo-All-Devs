@@ -112,10 +112,16 @@ manager.alert = function(name)
 
         room.alerte.pause();
 
-        rooms[name].begin();
+
         //EFFACER ALERTE
           room.ctx.clearRect(0,0,room.width,room.height);
+
+              rooms[name].begin();
+
+        if(name != "cuisine")
+        {
         room.cvs.onclick = null;
+      }
     }
 
 
