@@ -1,7 +1,11 @@
 var draw = {},sprite={};
 
 
-draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase","KevinTientVase","LegoOrange","LegoRose","Vase","VasePete"];
+draw.imgs = [
+"chambre","bains","toilettes","salon","cuisine","couloir",
+"AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur",
+"KevinLacheVase","KevinTientVase","LegoOrange",
+"LegoRose","Vase","VasePete"];
 
 
 draw.init = function(callb)
@@ -45,6 +49,7 @@ draw.initRoom = function()
 			cvs.height = room.height;
 			room.cvs = cvs;
 
+			cvs.id = i;
 			cvs.style.position = 'absolute';
 			cvs.style.left = room.x+'px';
 			cvs.style.top = room.y+'px';
