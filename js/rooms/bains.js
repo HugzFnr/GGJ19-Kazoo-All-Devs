@@ -11,7 +11,7 @@ var frame = 0;
 var delta = 1000/60; // 60 fps trop ouf
 var robinet;
 
-shortcut.add("A",function() 
+shortcut.add("F",function() 
     {
         robinet = 1;
     },{
@@ -20,7 +20,7 @@ shortcut.add("A",function()
         'target':document
     });
 
-shortcut.add("A",function() 
+shortcut.add("F",function() 
     {
         robinet = 0;
     },{
@@ -35,14 +35,22 @@ bains.begin = function()
     var canvas = bains.cvs;
     var context = bains.context = canvas.getContext("2d");
 
-    // Green rectangle
+    //jauge
     context.beginPath();
     context.lineWidth = "4";
     context.strokeStyle = "black";
     context.rect(bains.width-60, 8, 50, 158);
     context.stroke();
 
+    //baignoire
+    context.beginPath();
+    context.lineWidth = "4";
+    context.strokeStyle = "black";
+    context.rect(50, 50, 200, 100);
+    context.stroke();
+
     var remplissage = 0;
+    var jauge = 0;
     setInterval( function()
     {
         //context.clearRect(0,0, canvas.width, canvas.height);
@@ -50,16 +58,42 @@ bains.begin = function()
         //30*60 fps = 1800 frames
         //h=120 donc 1px toutes les 15 frames
 
-        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage ++;
+        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=8;
 
+        if(remplissage <= 158) jauge = remplissage;
 
 
         context.fillStyle = "blue";
-        context.fillRect(bains.width-58, bains.height - 16 - remplissage, 46, remplissage);
+        context.fillRect(bains.width-58, bains.height - 16 - jauge, 46, jauge);
         context.fillStyle = "black";
 
+        if(remplissage <= 50 && remplissage >= 25)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(120, 100, 40, 20);
+            context.fillStyle = "black";
+        }
+        else if (remplissage <= 100 && remplissage > 50)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(120, 80, 80, 40);
+            context.fillStyle = "black";
+        }
+        else if (remplissage <= 150 && remplissage > 100)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(54, 54, 192, 92);
+            context.fillStyle = "black";
+        }
+        else if (remplissage > 160)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(20, 20, 300, 150);
+            context.fillStyle = "black";
+        }
+        else {}
 
-
+        
 
     },delta);
     
