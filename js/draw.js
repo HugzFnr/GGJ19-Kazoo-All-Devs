@@ -4,6 +4,7 @@ var draw = {},sprite={};
 draw.imgs = ["AdulteCourseDCouleur"];
 
 
+
 draw.init = function(callb)
 {
 	draw.load(draw.imgs,callb);
