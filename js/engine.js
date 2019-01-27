@@ -36,10 +36,15 @@ function init()
 		if(initAudio && initDraw)
 		{
 
-			draw.initRoom();
+		title.onclick = function()
+			{
+				title.style.display = "none";
+				draw.initRoom();
+				manager.start();
+			}
 
 
-			manager.start();
+		}
 		/*
 			salon.begin();
 			couloir.begin();
@@ -49,10 +54,11 @@ function init()
 			toilettes.begin();
 			*/
 			//alert("Chargé ! ");
-		}
+
 	}
 
 
 }
 
-init();
+var title = qs("title");
+init()
