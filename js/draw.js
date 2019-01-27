@@ -1,7 +1,7 @@
 var draw = {},sprite={};
 
 
-draw.imgs = ["AdulteBrasLeve", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase","KevinTientVase","Vase"];
+draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase","KevinTientVase","Vase","VasePete"];
 
 
 

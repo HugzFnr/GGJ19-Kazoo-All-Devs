@@ -16,8 +16,10 @@ salon.begin = function()
     var direction = 0;
 
     //vases
-    var largeurVase = sprite.Vase.width;
-    var hauteurVase = sprite.Vase.height;
+    x = 0;
+    y = 0;
+    var largeurVase = sprite.Vase.width/3;
+    var hauteurVase = sprite.Vase.height/3;
 
     //tableau des  vases
     var tableau = [];
@@ -26,16 +28,16 @@ salon.begin = function()
     {
         var vase = {};
         vase.x = rand(0,salon.width-largeurVase);
-        vase.y = 0;
+        vase.y = - hauteurVase;
         vase.gravite = 0;
         tableau.push(vase);
     }
 
     //position parent
-    var largeurParent = sprite.AdulteCourseDCouleur.width/8;
-    var hauteurParent = sprite.AdulteCourseDCouleur.height/8;
+    var largeurParent = sprite.AdulteCourseDCouleur.width/5;
+    var hauteurParent = sprite.AdulteCourseDCouleur.height/5;
     var x2 = (salon.width - largeurParent) /2;
-    var y2 = salon.height - hauteurParent;
+    var y2 = salon.height - hauteurParent - 4;
 
 
     shortcut.add("Left",function() 
@@ -77,6 +79,8 @@ salon.begin = function()
     var context = salon.context =  canvas.getContext("2d");
     
     //context.fillRect(x, y, largeurVase, hauteurVase);
+    context.drawImage(sprite.Vase, x, y, largeurVase, hauteurVase);
+
 
    //ctx.clearRect(20, 20, 100, 50);
 
@@ -87,9 +91,7 @@ salon.begin = function()
    salon.timer = setInterval(function()
 {
     context.clearRect(0,0, canvas.width, canvas.height);
-    frame++;
-
-        
+    frame++;        
 
     if(direction == -1 && x2 != 0)
     {
@@ -105,15 +107,15 @@ salon.begin = function()
     //context.fillRect(x2, y2, largeurParent, hauteurParent);
     if(frame%30 <= 15 && direction != 0)
     {
-        context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, sprite.AdulteCourseDCouleur.width/8, sprite.AdulteCourseDCouleur.height/8);
+        context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, largeurParent, hauteurParent);
     }    
     else if(frame%30 > 15 && direction != 0)
     {
-        context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, sprite.AdulteCourseGCouleur.width/8, sprite.AdulteCourseGCouleur.height/8);
+        context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, largeurParent, hauteurParent);
     }
     else
     {
-        context.drawImage(sprite.AdulteBrasLeve, x2 ,y2, sprite.AdulteBrasLeve.width/8, sprite.AdulteBrasLeve.height/8);
+        context.drawImage(sprite.AdulteBrasLeveCouleur, x2 ,y2, largeurParent, hauteurParent);
     }
 
     for(j=0;j<15;j++)
@@ -141,9 +143,8 @@ salon.begin = function()
         if (tableau[j].gravite == 1)
         {
             tableau[j].y+=3;
-            context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
-
-            context.drawImage(sprite.Vase, tableau[j].x , tableau[j].y, sprite.Vase.width/8, sprite.Vase.height/8);
+            //context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
+            context.drawImage(sprite.Vase, tableau[j].x , tableau[j].y, largeurVase, hauteurVase);
         }
 
         if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 1)
