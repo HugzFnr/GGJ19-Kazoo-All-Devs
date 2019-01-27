@@ -28,15 +28,16 @@ couloir.begin = function()
     y : ch*(1/120),
     w : cw*(1/30),
     h : ch*(1/2),
-}
+    }
 
 var tabL = [];
 var deltaSpawn = 1000; //1000 is like a lil hard
-var speed = 10;
+var speed = 7;
 var timeSpent=0;
 
-setInterval(function()
+var spawn = setInterval(function()
 { //spawn of new legos
+
     var boxL = {
         x : cw*(19/20), //initial values for obstacles
         y : ch*(1/6) + rand(0,1)*60,
@@ -47,27 +48,39 @@ setInterval(function()
     
 }, deltaSpawn);
 
-  setInterval(function()
+  var frame = setInterval(function()
   {
-    ctx.clearRect(0,0,cw,ch);
-    
-    if (nbFails>0) { //displays parent
-    ctx.fillStyle= "green";
-    boxP.y=ch/120 + pos*55 //UP AND DOWN
-    ctx.fillRect(boxP.x,boxP.y,boxP.w,boxP.h);
-    }
-    
-    if (checkAllColli(tabL))
-    {
-        nbFails--;
-    }  
 
-    updateLegos(tabL);
-    timeSpent+=1000/30;
+    if (nbFails==0)
+    {
+        endGame("DEFEAT");
+    }
+
+    else if (timeSpent>gameDur)
+    {
+        endGame("WIN");       
+    }
+
+    else {
+        ctx.clearRect(0,0,cw,ch);
+        if (nbFails>0) { //displays parent
+        ctx.fillStyle= "green";
+        boxP.y=ch/120 + pos*55 //UP AND DOWN
+        ctx.fillRect(boxP.x,boxP.y,boxP.w,boxP.h);
+        }
+        
+        if (checkAllColli(tabL))
+        {
+            nbFails--;
+        }  
+
+        updateLegos(tabL);
+        timeSpent+=1000/30;
+    }
 
   }, deltaT);
 
-  shortcut.add("Down",function() {
+shortcut.add("Down",function() {
     pos = 1;
 },{
     'type':'keydown',
@@ -102,7 +115,6 @@ function checkAllColli(tab)
 {
     for(var iter=0;iter<tab.length;iter++) {
         if (tab[iter]!=null) {
-        console.log(tab[iter].x);
         if (checkCollision(boxP,tab[iter])) {
             tab[iter] = null;
             return true;
@@ -114,7 +126,6 @@ function checkAllColli(tab)
 
 function updateLegos(tab)
 {
-    console.log(tab.length);
     for(var iter=0;iter<tab.length;iter++)
     {
         if (tab[iter]!=null && tab[iter].x<=20) 
@@ -131,4 +142,14 @@ function updateLegos(tab)
     }
 }
 
+function endGame(end)
+{
+    console.log(end + " COULOIR");
+    ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
+    clearInterval(frame);
+    clearInterval(spawn);
 }
+
+}
+
+
