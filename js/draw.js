@@ -116,3 +116,10 @@ draw.initRoom = function()
 
 		}
 }
+
+
+draw.entropy = function()
+{
+	var ctx = qs("barre").getContext("2d");
+	ctx.drawImage(sprite.entropiePleine,0, 0, sprite.entropiePleine.width*entropy/100, sprite.entropiePleine.height, 0, 0,sprite.entropiePleine.width*entropy/100, sprite.entropiePleine.height)
+}
