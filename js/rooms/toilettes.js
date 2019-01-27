@@ -13,7 +13,7 @@ toilettes.playing = false;
 toilettes.begin = function()
 {
   toilettes.playing = true;
-  letters = "GHJKL";
+  letters = "GHJK";
 
   for(var i in letters)
   {
@@ -21,14 +21,22 @@ toilettes.begin = function()
     //JAVASCRIPT MAGIC ??????
     var f = function(f,key)
     {
-        alert(f.key)
+        press(f.key)
     }
 
     f.key = letters[i];
 
-
     shortcut.add(letters[i],f)
 
+  }
+
+
+
+
+  function press(letter)
+  {
+    letter= letter.toUpperCase();
+    
   }
 
 

@@ -8,24 +8,29 @@ chambre.y = (80 + 250)*zoomRooms;
 chambre.width = 300*zoomRooms;
 chambre.height = 150*zoomRooms;
 
+chambre.shortcut;
+chambre.playing = false;
 
 chambre.begin = function()
 {
-    shortcut.add("Space",function()
+    chambre.playing = true;
+
+    chambre.shortcut = shortcut.add("Space",function()
     {
-      yell();
-      if(C == A*B) //Valide
-      {
-        error();
-      }
-      else
-      {
-        valid();
-      }
-
-      clearTimeout(timer);
-
-    });
+        if(chambre.playing)
+        {
+            yell();
+            if(C == A*B) //Valide
+            {
+              error();
+            }
+            else
+            {
+              valid();
+            }
+            clearTimeout(timer);
+        }
+  });
 
 
     ctx = chambre.ctx = chambre.cvs.getContext("2d");
@@ -58,6 +63,10 @@ chambre.begin = function()
       write(A+" x "+B+" = "+C);
       timer = setTimeout(function()
       {
+
+        if()
+
+
         genQuestion();
       },delta)
     }
@@ -78,11 +87,11 @@ chambre.begin = function()
 
     function error()
     {
-      //...
       ctx.strokeStyle = "red";
       ctx.strokeText("X",120,120);
 
       //GAMEOVER ou pas
+      chambre.end();
 
     }
 
@@ -93,5 +102,13 @@ chambre.begin = function()
       setTimeout(genQuestion,1500)
     }
 
+
+}
+
+
+chambre.end = function()
+{
+  ctx.clearRect(0,0,chambre.cvs.width,chambre.cvs.height);
+  chambre.playing = false;
 
 }

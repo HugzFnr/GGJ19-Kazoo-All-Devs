@@ -35,23 +35,15 @@ function init()
 	{
 		if(initAudio && initDraw)
 		{
-			
+
 			draw.initRoom();
 
 			salon.begin();
 			couloir.begin();
 			chambre.begin();
-<<<<<<< HEAD
-<<<<<<< HEAD
 			bains.begin();
-
-
-=======
-=======
 			cuisine.begin();
->>>>>>> 9caf8f0ca95ee19e64e720f952d97445f98140e7
 			toilettes.begin();
->>>>>>> 3d112e73b8239a5387ff4547f3b8cf4a8376ba99
 
 			//alert("Chargé ! ");
 		}
