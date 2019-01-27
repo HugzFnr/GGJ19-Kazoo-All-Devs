@@ -83,7 +83,7 @@ cuisine.begin = function ()
 function drawRect(color,box)
 {
     ctx.fillStyle = color;
-    ctx.fillRect(box.x,box.y,box.w,box.h);
+    //ctx.fillRect(box.x,box.y,box.w,box.h);
 }
 
 function updateSmoke(lvl)

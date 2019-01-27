@@ -17,9 +17,16 @@ salon.begin = function()
     salon.playing = true;
     var direction = 0;
 
+    //position Kevin
+    var vk = 1;
+    var xk = 0;
+    var yk = 0;
+    var lk = sprite.KevinLacheVase.width/8;
+    var hk = sprite.KevinLacheVase.height/8;
+
     //vases
-    x = 0;
-    y = 0;
+    var x = 0;
+    var y = 0;
     var largeurVase = sprite.Vase.width/3;
     var hauteurVase = sprite.Vase.height/3;
 
@@ -91,89 +98,100 @@ salon.begin = function()
    var vasesCasses = 0;
 
    salon.timer = setInterval(function()
-{
-    context.clearRect(0,0, canvas.width, canvas.height);
-    frame++;        
-
-    if(direction == -1 && x2 >= 0)
     {
-        x2 += direction*2;
-    }
+        context.clearRect(0,0, canvas.width, canvas.height);
+        frame++;
 
-    if(direction == 1 && x2 <= salon.width - largeurParent)
-    {
-        x2 += direction*2;
-    }
+        //déplacements de kevin
+        if(xk + lk >= salon.width && vk >= 0) vk = -vk;
+        if(xk <= 0 && vk <= 0) vk = -vk;
 
-    
+        xk+=vk;
 
-    for(j=0;j<15;j++)
-    {
-        if(frame == j*100)
+        if(frame%100 <= 50) context.drawImage(sprite.KevinLacheVase, xk , yk, lk, hk)
+        else context.drawImage(sprite.KevinTientVase, xk , yk, lk, hk);
+               
+        //déplacements parent
+        if(direction == -1 && x2 >= 0)
         {
-            tableau[j].gravite = 1;
+            x2 += direction*2;
         }
 
-        //détection de collision
-        if (tableau[j].x < x2 + largeurParent &&
-            tableau[j].x + largeurVase > x2 &&
-            tableau[j].y < y2 + hauteurParent &&
-            tableau[j].y + hauteurVase > y2 &&
-            tableau[j].gravite == 1)
+        if(direction == 1 && x2 <= salon.width - largeurParent)
+        {
+            x2 += direction*2;
+        }
+
+        
+
+        for(j=0;j<15;j++)
+        {
+            if(frame == j*100)
             {
-                //tableau[j] = null; VOIR AVEC YOUNES
-                tableau[j].x = -largeurVase;
-                tableau[j].y = salon.height;
+                tableau[j].gravite = 1;
+            }
+
+            //détection de collision
+            if (tableau[j].x < x2 + largeurParent &&
+                tableau[j].x + largeurVase > x2 &&
+                tableau[j].y < y2 + hauteurParent &&
+                tableau[j].y + hauteurVase > y2 &&
+                tableau[j].gravite == 1)
+                {
+                    //tableau[j] = null; VOIR AVEC YOUNES
+                    tableau[j].x = -largeurVase;
+                    tableau[j].y = salon.height;
+                    tableau[j].gravite = 0;
+
+                    if(j==14) salon.end();
+                }            
+            else
+            if (tableau[j].gravite == 1)
+            {
+                tableau[j].y+=3;
+                //context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
+                context.drawImage(sprite.Vase, tableau[j].x , tableau[j].y, largeurVase, hauteurVase);
+            }
+
+            if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 1)
+            {
+                vasesCasses++;
+            }
+
+            if(tableau[j].y >= salon.height - hauteurVase)
+            {
                 tableau[j].gravite = 0;
 
-                if(j==14) salon.end();
-            }            
-        else
-        if (tableau[j].gravite == 1)
-        {
-            tableau[j].y+=3;
-            //context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
-            context.drawImage(sprite.Vase, tableau[j].x , tableau[j].y, largeurVase, hauteurVase);
+                context.drawImage(sprite.VasePete, tableau[j].x , tableau[j].y, sprite.VasePete.width/3, sprite.VasePete.height/3);
+
+
+                if(j==14 || vasesCasses == 3) salon.end();
+            }  
+
+            //affichage parent
+            //context.fillRect(x2, y2, largeurParent, hauteurParent);
+            if(frame%30 <= 15 && direction != 0)
+            {
+                context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, largeurParent, hauteurParent);
+            }    
+            else if(frame%30 > 15 && direction != 0)
+            {
+                context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, largeurParent, hauteurParent);
+            }
+            else
+            {
+                context.drawImage(sprite.AdulteBrasLeveCouleur, x2 ,y2, largeurParent, hauteurParent);
+            }
+
+
+
+            if(!salon.playing) salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
         }
 
-        if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 1)
-        {
-            vasesCasses++;
-        }
 
-        if(tableau[j].y >= salon.height - hauteurVase)
-        {
-            tableau[j].gravite = 0;
-            //context.fillStyle = "red";
-            //context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
-            //context.fillStyle = "black";
-            context.drawImage(sprite.VasePete, tableau[j].x , tableau[j].y, largeurVase, hauteurVase);
-
-
-            if(j==14 || vasesCasses == 3) salon.end();
-        }  
-
-        //parent
-        //context.fillRect(x2, y2, largeurParent, hauteurParent);
-        if(frame%30 <= 15 && direction != 0)
-        {
-            context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, largeurParent, hauteurParent);
-        }    
-        else if(frame%30 > 15 && direction != 0)
-        {
-            context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, largeurParent, hauteurParent);
-        }
-        else
-        {
-            context.drawImage(sprite.AdulteBrasLeveCouleur, x2 ,y2, largeurParent, hauteurParent);
-        }
-        
-
-        if(!salon.playing) salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
+            
+    }, delta);
     }
-        
-}, delta);
-}
 
 salon.end = function(){
 
@@ -185,3 +203,4 @@ salon.end = function(){
 
 
 }
+
