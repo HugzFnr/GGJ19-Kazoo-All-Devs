@@ -54,49 +54,52 @@ toilettes.begin = function()
   var frame = 0;
   toilettes.timer = setInterval(function()
   {
-    frame ++;
-    //affiche kevin
-    var ctx = toilettes.ctx;
-    ctx.clearRect(160,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
-    ctx.clearRect(20,120, 80, 80);
-
-
-
-    if(frame%200 <= 100 && toilettes.playing)
-
-
-      ctx.drawImage(sprite.ChiottesVentouseHaute, 
-        160, 
-        12, 
-        sprite.ChiottesVentouseHaute.width/2, );
-    else
-    if(frame%200 >= 100 && toilettes.playing)
-      ctx.drawImage(sprite.ChiottesVentousePlonge, 
-        160, 
-        0, 
-        sprite.ChiottesVentousePlonge.width/2, 
-        sprite.ChiottesVentousePlonge.height/2);
-    
-    if(frame%60 <= 30)
+    if(toilettes.playing)
     {
-      ctx.drawImage(sprite[toilettes.KEY+"1"], 
-        20, 
-        120, 
-        sprite[toilettes.KEY+"1"].width, 
-        sprite[toilettes.KEY+"1"].height);
+
+    
+      frame ++;
+      //affiche kevin
+      var ctx = toilettes.ctx;
+      ctx.clearRect(160,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
+      ctx.clearRect(20,120, 80, 80);
+
+
+
+      if(frame%200 <= 100 && toilettes.playing)
+        ctx.drawImage(sprite.ChiottesVentouseHaute, 
+          160, 
+          12, 
+          sprite.ChiottesVentouseHaute.width/2,
+          sprite.ChiottesVentouseHaute.height/2);
+      else
+      if(frame%200 >= 100 && toilettes.playing)
+        ctx.drawImage(sprite.ChiottesVentousePlonge, 
+          160, 
+          0, 
+          sprite.ChiottesVentousePlonge.width/2, 
+          sprite.ChiottesVentousePlonge.height/2);
       
+      if(frame%60 <= 30)
+      {
+        ctx.drawImage(sprite[toilettes.KEY+"1"], 
+          20, 
+          120, 
+          sprite[toilettes.KEY+"1"].width, 
+          sprite[toilettes.KEY+"1"].height);
+        
+      }
+      else{
+        ctx.drawImage(sprite[toilettes.KEY+"2"], 
+          20, 
+          120, 
+          sprite[toilettes.KEY+"2"].width, 
+          sprite[toilettes.KEY+"2"].height);
+      }
+
+
+      //rooms.chambre.begin()
     }
-    else{
-      ctx.drawImage(sprite[toilettes.KEY+"2"], 
-        20, 
-        120, 
-        sprite[toilettes.KEY+"2"].width, 
-        sprite[toilettes.KEY+"2"].height);
-    }
-
-
-    //rooms.chambre.begin()
-
   },delta);
 
   }
@@ -124,7 +127,7 @@ toilettes.begin = function()
 
       toilettes.answered = false;
       ctx.font = '24px Serif';
-      write(( PRESS ? "" : "DON'T " )+ "PRESS "+toilettes.KEY)
+      write(( PRESS ? "" : "DON'T " )+ "PRESS ")
 
       //LAISSÉ PASSÉ
       toilettes.timer = setTimeout(function()

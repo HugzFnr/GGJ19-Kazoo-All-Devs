@@ -11,7 +11,7 @@ var cycles = 0; //game's length
 //NOUS FAUT UN ECRAN DE FIN = VICTOIRE PCK YA PAS DE DEFAITE EN FAIT
 
 manager.boredTimer;
-manager.boredInterval = 2000;
+manager.boredInterval = 10000;
 manager.waitingTime = 7000;
 
 manager.themeTimer;
@@ -94,20 +94,31 @@ manager.alert = function(name)
 {
     var room = rooms[name];
 
-    console.log(room);
     room.alerte.replay();
-    room.cvs.style.backgroundColor = "red";
+
+    //AFFICHER ALERTE
+    var alarme = sprite["kevinAlert"+name];
+    room.ctx.drawImage(alarme,(room.width-alarme.width)/2,(room.height-alarme.height)/2);
 
 
     room.cvs.onclick = function()
     {
         var name = this.id;
-        rooms[name].begin();
+
         clearInterval(manager.timers[name]);
 
         room.alerte.pause();
-        room.cvs.style.backgroundColor = "";
 
+
+        //EFFACER ALERTE
+          room.ctx.clearRect(0,0,room.width,room.height);
+
+              rooms[name].begin();
+
+        if(name != "cuisine")
+        {
+        room.cvs.onclick = null;
+      }
     }
 
 
@@ -125,9 +136,12 @@ manager.missed = function(name)
 {
   var room = rooms[name];
   room.alerte.pause();
+
+  room.ctx.clearRect(0,0,room.width,room.height);
   room.cvs.onclick = null;
   room.cvs.style.backgroundColor = "";
   manager.addEntropy(5);
+
 }
 
 

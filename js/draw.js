@@ -2,12 +2,13 @@ var draw = {},sprite={};
 
 
 
-draw.imgs = ["entropieVide","entropiePleine","interieur","AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
+draw.imgs = ["kevinAlertchambre","entropieVide","entropiePleine","interieur","AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
 "KevinTientVase","LegoOrange","LegoRose","Vase","VasePete","smoke1","smoke2","smoke3","smoke4","smoke5",
 "DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44","bullePenseeKevin",
 "bullePenseeParent","KevinChambre1","KevinChambre2","ChiottesVentouseHaute","ChiottesVentousePlonge","CookingRight","CookingLeft",
 "kevinAlertcouloir","kevinAlertcuisine","kevinAlertbains","kevinAlertsalon","kevinAlerttoilettes",
-"left1","left2","right1","right2","C1","C2","H1","H2","I1","I2","T1","T2"];
+"left1","left2","right1","right2","C1","C2","H1","H2","I1","I2","T1","T2",
+"bainouare","bainouare1","bainouare2","bainouare3","bainouare4"];
 
 draw.init = function(callb)
 {
