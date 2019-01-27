@@ -5,7 +5,7 @@ draw.imgs = [
 "chambre","bains","toilettes","salon","cuisine","couloir",
 "AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur",
 "KevinLacheVase","KevinTientVase","LegoOrange",
-"LegoRose","Vase","VasePete"];
+"LegoRose","Vase","VasePete","bullePenseeKevin", "bullePenseeParent"];
 
 
 draw.init = function(callb)
