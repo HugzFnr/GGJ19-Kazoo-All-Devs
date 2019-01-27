@@ -8,6 +8,8 @@ var score = 0;
 var deltaCycle = 21000;
 var cycles = 0; //game's length
 
+var multiScore = 1;
+
 manager.boredTimer;
 manager.boredInterval = 10000;
 manager.waitingTime = 7000;
@@ -123,8 +125,6 @@ manager.alert = function(name)
     {
         manager.missed(name);
     },manager.waitingTime);
-
-
 
 }
 
