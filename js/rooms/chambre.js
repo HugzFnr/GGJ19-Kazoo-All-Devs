@@ -1,7 +1,10 @@
 chambre = {};
 rooms.chambre = chambre;
-
-
+chambre.init = function()
+{
+rooms.chambre.theme   =  sound.musicChambre;
+rooms.chambre.alerte  =  sound.BruitHelp;
+}
 chambre.x = (100 + 500)*zoomRooms;
 chambre.y = (80 + 250)*zoomRooms;
 
@@ -14,9 +17,13 @@ chambre.life;
 chambre.timer;
 chambre.answered = false;
 
+var canvas = chambre.cvs;
+
 chambre.begin = function()
 {
     chambre.playing = true;
+
+    
 
     chambre.life = 3;
     chambre.shortcut = shortcut.add("Space",function()
@@ -36,13 +43,43 @@ chambre.begin = function()
         }
   });
 
-  chambre.timerMax = setTimeout(function()
-{
-    if(chambre.playing) // Limite de temps dépassée
-    {
-        chambre.end(true);
-    }
-},gameDur)
+  var delta = 1000/60; // 60 fps trop ouf
+  var frame = 0;
+  chambre.timer = setInterval(function()
+  {
+    frame ++;
+    //affiche kevin
+    var ctx = chambre.ctx;
+    ctx.clearRect(0,90, sprite.KevinChambre1.width/6 + 20, sprite.KevinChambre2.height/6);
+
+
+    if(frame%100 <= 50 && chambre.playing)
+      ctx.drawImage(sprite.KevinChambre1, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 10, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/100, 
+        sprite.KevinChambre1.width/6, 
+        sprite.KevinChambre1.height/6);
+    
+    else
+    if(frame%100 >= 50 && chambre.playing)
+      ctx.drawImage(sprite.KevinChambre2, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 0, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/100, 
+        sprite.KevinChambre2.width/6, 
+        sprite.KevinChambre2.height/6);
+    
+
+    //rooms.chambre.begin()
+    
+  },delta);
+
+    chambre.timerMax = setTimeout(function()
+  {
+      if(chambre.playing) // Limite de temps dépassée
+      {
+          chambre.end(true);
+      }
+  },gameDur)
 
 
     ctx = chambre.ctx = chambre.cvs.getContext("2d");
@@ -55,6 +92,8 @@ chambre.begin = function()
     var bigDelta = 3000;
     var lilDelta = 1500;
     genQuestion();
+
+
 
     function genQuestion()
     {
@@ -98,22 +137,39 @@ chambre.begin = function()
     function write(str)
     {
       var ctx = chambre.ctx;
+
+      ctx.drawImage(sprite.bullePenseeKevin, 50 , 5, 300, 80);
+
       ctx.strokeStyle = "black";
-      ctx.strokeText(str,10,10);
+      ctx.strokeText(str,120,22);
     }
 
     function yell()
     {
       var ctx = chambre.ctx;
+
+      ctx.drawImage(sprite.bullePenseeParent, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 200, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/80, 
+        /*sprite.bullePenseeParent.width/4*/150, 
+        /*sprite.bullePenseeParent.height/4*/90)
+
       ctx.strokeStyle = "black";
-      ctx.strokeText("NO !",120,70);
+      ctx.strokeText("NO !",220,100);
     }
 
     function error()
     {
       chambre.answered = true;
+
+      ctx.drawImage(sprite.bullePenseeParent, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 200, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/80, 
+        /*sprite.bullePenseeParent.width/4*/150, 
+        /*sprite.bullePenseeParent.height/4*/90);
+
       ctx.strokeStyle = "red";
-      ctx.strokeText("X",120,120);
+      ctx.strokeText("X",250,100);
 
       chambre.life--;
 
@@ -137,8 +193,15 @@ chambre.begin = function()
     function valid()
     {
       chambre.answered = true;
+
+      ctx.drawImage(sprite.bullePenseeParent, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 200, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/80, 
+        /*sprite.bullePenseeParent.width/4*/150, 
+        /*sprite.bullePenseeParent.height/4*/90);
+
       ctx.strokeStyle = "green";
-      ctx.strokeText("V",120,120);
+      ctx.strokeText("V",250,100);
       setTimeout(genQuestion,lilDelta)
     }
 
@@ -152,4 +215,5 @@ chambre.end = function(win)
   chambre.playing = false;
   clearTimeout(chambre.timer);
   clearTimeout(chambre.timerMax);
+  chambre.theme.pause();
 }

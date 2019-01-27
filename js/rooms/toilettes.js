@@ -2,6 +2,11 @@ toilettes = {};
 rooms.toilettes = toilettes;
 
 
+toilettes.init = function () {
+rooms.toilettes.theme   =  sound.musicToilettes;
+rooms.toilettes.alerte  =  sound.EventToilet;
+}
+
 toilettes.x = (100 + 550)*zoomRooms;
 toilettes.y = (80 + 0)*zoomRooms;
 
@@ -29,7 +34,7 @@ toilettes.begin = function()
   var waitingDelta = 2000;
 
   ctx.textBaseline = "top";
-  ctx.font = '36px serif';
+  ctx.font = '24px Arial';
 
 
   for(var i in toilettes.letters)
@@ -44,6 +49,37 @@ toilettes.begin = function()
     f.key = toilettes.letters[i];
 
     shortcut.add(toilettes.letters[i],f)
+
+    
+  var delta = 1000/60; // 60 fps trop ouf
+  var frame = 0;
+  toilettes.timer = setInterval(function()
+  {
+    frame ++;
+    //affiche kevin
+    var ctx = toilettes.ctx;
+    ctx.clearRect(180,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
+
+
+    if(frame%200 <= 100 && toilettes.playing)
+      ctx.drawImage(sprite.ChiottesVentouseHaute, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 180, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/12, 
+        sprite.ChiottesVentouseHaute.width/2, 
+        sprite.ChiottesVentouseHaute.height/2);
+    
+    else
+    if(frame%200 >= 100 && toilettes.playing)
+      ctx.drawImage(sprite.ChiottesVentousePlonge, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 180, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/0, 
+        sprite.ChiottesVentousePlonge.width/2, 
+        sprite.ChiottesVentousePlonge.height/2);
+    
+
+    //rooms.chambre.begin()
+    
+  },delta);
 
   }
 
@@ -173,5 +209,5 @@ toilettes.end = function(win)
 
   toilettes.ctx.clearRect(0,0,toilettes.cvs.width,toilettes.cvs.height),
   toilettes.playing = false;
-
+  toilettes.theme.pause();
 }
