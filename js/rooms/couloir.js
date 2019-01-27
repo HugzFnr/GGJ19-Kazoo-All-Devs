@@ -38,14 +38,16 @@ couloir.begin = function()
 
 var tabL = [];
 var deltaSpawn = 1000; //1000 is like a lil hard
+var deltaAnim = 1000/7; 
 var speed = 7;
 var timeSpent=0;
+var anim = 1;
 
 var spawn = setInterval(function()
 { //spawn of new legos
 
     var boxL = {
-        x : cw*(19/20), //initial values for obstacles
+        x : cw*(18/20), //initial values for obstacles
         y : ch*(1/6) + rand(0,1)*60,
         w : cw*(1/30),
         h : ch*(1/5),
@@ -70,9 +72,9 @@ var spawn = setInterval(function()
     else {
         ctx.clearRect(0,0,cw,ch);
         if (nbFails>0) { //displays parent
-        ctx.fillStyle= "green";
-        boxP.y=ch/120 + pos*55 //UP AND DOWN
-        ctx.fillRect(boxP.x,boxP.y,boxP.w,boxP.h);
+        boxP.y=ch/120 + pos*55; //UP AND DOWN
+
+        updateParent(anim);
         }
 
         if (checkAllColli(tabL))
@@ -83,8 +85,14 @@ var spawn = setInterval(function()
         updateLegos(tabL);
         timeSpent+=1000/30;
     }
-
+    
   }, deltaT);
+
+  var animation = setInterval(function()
+  {
+    if (anim<4) anim++;
+    else anim=1;
+  },deltaAnim);
 
 shortcut.add("Down",function() {
     if (couloir.playing) pos = 1;
@@ -143,11 +151,21 @@ function updateLegos(tab)
         tab[iter].x-=speed;
 
         if (tab[iter].y>50) ctx.drawImage(sprite.LegoOrange, tab[iter].x,tab[iter].y);
-        else ctx.drawImage(sprite.LegoRose, tab[iter].x,tab[iter].y)
-
+        else ctx.drawImage(sprite.LegoRose, tab[iter].x,tab[iter].y);
         }
 
     }
+}
+
+function updateParent(anim)
+{
+    if (anim==1) ctx.drawImage(sprite.DominiqueCavale11,boxP.x,boxP.y);
+    else if (anim==2) ctx.drawImage(sprite.DominiqueCavale22,boxP.x,boxP.y);
+    else if (anim==3) ctx.drawImage(sprite.DominiqueCavale33,boxP.x,boxP.y);
+    else if (anim==4)
+    {
+        ctx.drawImage(sprite.DominiqueCavale44,boxP.x,boxP.y);
+    }    
 }
 
 function endGame(end)

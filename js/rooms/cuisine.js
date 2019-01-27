@@ -30,7 +30,7 @@ var boxCook = {
 
 var boxSmoke =
 {
-    x : 100,
+    x : 80,
     y : 20,
     w : 140,
     h : 60,
@@ -47,8 +47,8 @@ cuisine.begin = function ()
   var deltaChange = 2500;
   var timeSpent=0;
 
+  ctx.drawImage(sprite.CookingLeft,boxCook.x,boxCook.y);
   var left = true;
-  drawRect("blue",boxCook);
 
   var heatup = setInterval(function()
   {
@@ -74,13 +74,14 @@ cuisine.begin = function ()
     updateSmoke(dangerLvl);
     }
 
+    ctx.clearRect(boxCook.x,boxCook.y,boxCook.w,boxCook.h);
     if (left)
     {
-    drawRect("blue",boxCook);
+    ctx.drawImage(sprite.CookingRight,boxCook.x,boxCook.y);
     left=false;
     }
     else {
-    drawRect("red",boxCook);
+    ctx.drawImage(sprite.CookingLeft,boxCook.x,boxCook.y);
     left=true;
     }
 }
@@ -93,6 +94,7 @@ function drawRect(color,box)
 
 function updateSmoke(lvl)
 {
+    ctx.clearRect(boxSmoke.x,boxSmoke.y,boxSmoke.w,boxSmoke.h);
     if (lvl==4) ctx.drawImage(sprite.smoke5,boxSmoke.x,boxSmoke.y);
     else if (lvl==3) ctx.drawImage(sprite.smoke4,boxSmoke.x,boxSmoke.y);
     else if (lvl==1) ctx.drawImage(sprite.smoke2,boxSmoke.x,boxSmoke.y);
