@@ -1,7 +1,7 @@
 var draw = {},sprite={};
 
 
-draw.imgs = [];
+draw.imgs = ["AdulteCourseDCouleur"];
 
 
 draw.init = function(callb)
