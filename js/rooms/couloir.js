@@ -83,7 +83,7 @@ var spawn = setInterval(function()
   }, deltaT);
 
 shortcut.add("Down",function() {
-    pos = 1;
+    if (couloir.playing) pos = 1;
 },{
     'type':'keydown',
     'propagate':false,
@@ -91,7 +91,7 @@ shortcut.add("Down",function() {
 });
 
 shortcut.add("Up",function() {
-    pos = 0;
+    if ((couloir.playing) && (pos = 1)) pos = 0;
 },{
     'type':'keydown',
     'propagate':false,
