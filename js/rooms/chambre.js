@@ -55,16 +55,16 @@ chambre.begin = function()
 
     if(frame%100 <= 50 && chambre.playing)
       ctx.drawImage(sprite.KevinChambre1, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 10, 
-        /*chambre.height - sprite.bullePenseeParent.height/4*/100, 
+        10, 
+        100, 
         sprite.KevinChambre1.width/6, 
         sprite.KevinChambre1.height/6);
     
     else
     if(frame%100 >= 50 && chambre.playing)
       ctx.drawImage(sprite.KevinChambre2, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 0, 
-        /*chambre.height - sprite.bullePenseeParent.height/4*/100, 
+        0, 
+        100, 
         sprite.KevinChambre2.width/6, 
         sprite.KevinChambre2.height/6);
     
