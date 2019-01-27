@@ -2,7 +2,7 @@ var draw = {},sprite={};
 
 
 
-draw.imgs = ["interieur","AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
+draw.imgs = ["entropieVide","entropiePleine","interieur","AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
 "KevinTientVase","LegoOrange","LegoRose","Vase","VasePete","smoke1","smoke2","smoke3","smoke4","smoke5",
 "DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44","bullePenseeKevin",
 "bullePenseeParent","KevinChambre1","KevinChambre2","ChiottesVentouseHaute","ChiottesVentousePlonge","CookingRight","CookingLeft"];
@@ -37,25 +37,55 @@ draw.load = function(arr,callb)
 draw.initRoom = function()
 {
 
+	var maisonX = salon.x;
+	var maisonY = salon.y;
+	var maisonWidth 	= 960;
+	var maisonHeight = 481;
+
+	var barreX = 0;
+	var barreY = 0;
+	var barreWidth 	= sprite.entropieVide.width;
+	var barreHeight = sprite.entropieVide.height;
+
+
 		var map =qs("map");
 
-			var maisonX = salon.x;
-			var maisonY = salon.y;
-			var width 	= 960;
-			var height = 481;
+//BARRE ENTROPIE
 			var cvs = dc("canvas");
-			cvs.width = width;
-			cvs.height = height;
+			cvs.width = barreWidth;
+			cvs.height = barreHeight;
 
-			cvs.id = "maison";
+			cvs.id = "barre";
 			cvs.style.position = 'absolute';
-			cvs.style.left = maisonX+'px';
-			cvs.style.top = maisonY+'px';
+			cvs.style.left = barreX+'px';
+			cvs.style.top = barreY+'px';
 			cvs.style.padding = '0px';
 			cvs.style.margin = '0px';
-			cvs.style.backgroundImage = "url("+sprite.interieur.src+")";
+			cvs.style.backgroundImage = "url("+sprite.entropieVide.src+")";
 
 			map.appendChild(cvs);
+
+//MAISON
+			var map =qs("map");
+
+				var maisonX = salon.x;
+				var maisonY = salon.y;
+				var width 	= 960;
+				var height = 481;
+				var cvs = dc("canvas");
+				cvs.width = maisonWidth;
+				cvs.height = maisonHeight;
+
+				cvs.id = "maison";
+				cvs.style.position = 'absolute';
+				cvs.style.left = maisonX+'px';
+				cvs.style.top = maisonY+'px';
+				cvs.style.padding = '0px';
+				cvs.style.margin = '0px';
+				cvs.style.backgroundImage = "url("+sprite.interieur.src+")";
+
+				map.appendChild(cvs);
+
 
 		for(var i in rooms)
 		{
