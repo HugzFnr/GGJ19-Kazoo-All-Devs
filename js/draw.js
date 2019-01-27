@@ -2,7 +2,7 @@ var draw = {},sprite={};
 
 
 
-draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
+draw.imgs = ["interieur","AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
 "KevinTientVase","LegoOrange","LegoRose","Vase","VasePete","smoke1","smoke2","smoke3","smoke4","smoke5",
 "DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44","bullePenseeKevin", "bullePenseeParent"];
 
@@ -36,8 +36,26 @@ draw.load = function(arr,callb)
 
 draw.initRoom = function()
 {
+
 		var map =qs("map");
 
+			var maisonX = salon.x;
+			var maisonY = salon.y;
+			var width 	= 960;
+			var height = 481;
+			var cvs = dc("canvas");
+			cvs.width = width;
+			cvs.height = height;
+
+			cvs.id = "maison";
+			cvs.style.position = 'absolute';
+			cvs.style.left = maisonX+'px';
+			cvs.style.top = maisonY+'px';
+			cvs.style.padding = '0px';
+			cvs.style.margin = '0px';
+			cvs.style.backgroundImage = "url("+sprite.interieur.src+")";
+
+			map.appendChild(cvs);
 
 		for(var i in rooms)
 		{

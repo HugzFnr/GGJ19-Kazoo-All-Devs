@@ -4,7 +4,7 @@ rooms.salon = salon;
 salon.init = function()
 {
   rooms.salon.theme = sound.musicSalon;
-  rooms.salon.alarme = sound.EventSalon;
+  rooms.salon.alerte = sound.EventSalon;
 
 }
 

@@ -109,7 +109,7 @@ manager.alert = function(name)
         clearInterval(manager.timers[name]);
 
         room.alerte.pause();
-        room.cvs.style.backgroundColor = "white";
+        room.cvs.style.backgroundColor = "";
 
     }
 
@@ -129,7 +129,7 @@ manager.missed = function(name)
   var room = rooms[name];
   room.alerte.pause();
   room.cvs.onclick = null;
-  room.cvs.style.backgroundColor = "white";
+  room.cvs.style.backgroundColor = "";
 }
 
 
