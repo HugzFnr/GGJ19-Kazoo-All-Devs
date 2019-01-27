@@ -83,6 +83,8 @@ var spawn = setInterval(function()
         }
 
         updateLegos(tabL);
+        ctx.drawImage(sprite.up1,60,20);
+        ctx.drawImage(sprite.down1,60,70);    
         timeSpent+=1000/30;
     }
     
@@ -172,6 +174,7 @@ function endGame(end)
 {
     clearInterval(frame);
     clearInterval(spawn);
+    clearInterval(animation);
     ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
     couloir.playing=false;
     couloir.theme.pause();
