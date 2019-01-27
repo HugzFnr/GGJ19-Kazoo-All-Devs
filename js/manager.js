@@ -99,7 +99,10 @@ manager.alert = function(name)
 
     console.log(room);
     room.alerte.replay();
-    room.cvs.style.backgroundColor = "red";
+
+    //AFFICHER ALERTE
+    var alarme = sprite["kevinAlert"+name];
+    room.ctx.drawImage(alarme,(room.width-alarme.width)/2,(room.height-alarme.height)/2);
 
 
     room.cvs.onclick = function()
@@ -109,8 +112,10 @@ manager.alert = function(name)
         clearInterval(manager.timers[name]);
 
         room.alerte.pause();
-        room.cvs.style.backgroundColor = "";
 
+        //EFFACER ALERTE
+          room.ctx.clearRect(0,0,room.width,room.height);
+        room.cvs.onclick = null;
     }
 
 
@@ -128,8 +133,11 @@ manager.missed = function(name)
 {
   var room = rooms[name];
   room.alerte.pause();
+
+  room.ctx.clearRect(0,0,room.width,room.height);
   room.cvs.onclick = null;
-  room.cvs.style.backgroundColor = "";
+
+  //EFFACER ALARME
 }
 
 
