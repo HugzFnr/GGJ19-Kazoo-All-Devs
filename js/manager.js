@@ -4,8 +4,8 @@ var manager = {};
 
 
 var entropy = 0; // game ends when it reaches 100
-var score = 0; 
-var deltaCycle = 21000; 
+var score = 0;
+var deltaCycle = 21000;
 var cycles = 0; //game's length
 
 manager.boredTimer;
@@ -171,11 +171,52 @@ manager.missgame = function()
 manager.addEntropy = function(e)
 {
   entropy += e;
-  console.log(entropy);
   draw.entropy();
+
+	if(entropy >= 100)
+	{
+		endgame();
+	}
+	
+
 }
 
 manager.addScore = function(s)
 {
   score += s;
+}
+
+
+function endgame()
+{
+
+	mutePage();
+	
+	end.style.display = "block";
+	end.width = 1200;
+	end.height = 1000;
+	map.style.display = "none";
+	end.style.backgroundImage = "url("+sprite.KevinDabEcranFin.src+")";
+	ctx = end.getContext("2d");
+	ctx.fillStyle = "white";
+	ctx.font = '40px Serif';
+	ctx.fillText(score,520,260);
+	ctx.fillText("mdr j'en ai plus",520,360);
+}
+
+
+
+
+function muteMe(elem) {
+    elem.muted = true;
+    elem.pause();
+}
+
+// Try to mute all video and audio elements on the page
+function mutePage() {
+    var videos = document.querySelectorAll("video"),
+        audios = document.querySelectorAll("audio");
+
+    [].forEach.call(videos, function(video) { muteMe(video); });
+    [].forEach.call(audios, function(audio) { muteMe(audio); });
 }
