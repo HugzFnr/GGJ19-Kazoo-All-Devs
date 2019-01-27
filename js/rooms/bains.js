@@ -53,65 +53,63 @@ bains.begin = function()
     var canvas = bains.cvs;
     var context = bains.context = canvas.getContext("2d");
 
-    //jauge
-    context.beginPath();
-    context.lineWidth = "4";
-    context.strokeStyle = "black";
-    context.rect(bains.width-60, 8, 50, 158);
-    context.stroke();
+    
 
     //baignoire
-    context.beginPath();
+    /*context.beginPath();
     context.lineWidth = "4";
     context.strokeStyle = "black";
     context.rect(50, 50, 200, 100);
-    context.stroke();
+    context.stroke();*/
 
     var remplissage = 0;
     var jauge = 0;
     bains.timer = setInterval( function()
     {
-        //context.clearRect(0,0, canvas.width, canvas.height);
+        
         frame++;
-        //30*60 fps = 1800 frames
-        //h=120 donc 1px toutes les 15 frames
+        context.clearRect(0,0, bains.width, bains.height);
+
+        //jauge
+        context.beginPath();
+        context.lineWidth = "4";
+        context.strokeStyle = "black";
+        context.rect(bains.width-60, 8, 50, 158);
+        context.stroke();
+
 
         if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=5;
 
         if(remplissage <= 159) jauge = remplissage;
 
-
+        //remplir jauge
         context.fillStyle = "blue";
         context.fillRect(bains.width-58, bains.height - 16 - jauge, 46, jauge);
         context.fillStyle = "black";
 
+        var ctx = bains.ctx;
+
+        if(remplissage <= 25)
+            ctx.drawImage(sprite.bainouare, 60, 40 , sprite.bainouare.width/2,sprite.bainouare.height/2);
+        
+        else
         if(remplissage <= 50 && remplissage >= 25)
-        {
-            context.fillStyle = "lightblue";
-            context.fillRect(120, 100, 40, 20);
-            context.fillStyle = "black";
-        }
+            ctx.drawImage(sprite.bainouare1, 60, 40 , sprite.bainouare1.width/2,sprite.bainouare.height/2);
+
+        
         else if (remplissage <= 140 && remplissage > 50)
-        {
-            context.fillStyle = "lightblue";
-            context.fillRect(120, 80, 80, 40);
-            context.fillStyle = "black";
-        }
-        else if (remplissage > 140 && remplissage <= 160)
-        {
-            context.fillStyle = "lightblue";
-            context.fillRect(54, 54, 192, 92);
-            context.fillStyle = "black";
-            if(robinet == 0) bains.end();
-        }
+            ctx.drawImage(sprite.bainouare2, 60, 40 , sprite.bainouare2.width/2,sprite.bainouare.height/2);
+        
+        else if (remplissage > 140 && remplissage <= 160)        
+            ctx.drawImage(sprite.bainouare3, 60, 40 , sprite.bainouare3.width/2,sprite.bainouare.height/2);
+
+        
         else if (remplissage > 160)
         {
-            context.fillStyle = "lightblue";
-            context.fillRect(20, 20, 300, 150);
-            context.fillStyle = "black";
+            ctx.drawImage(sprite.bainouare4, 60, 40 , sprite.bainouare4.width/2,sprite.bainouare.height/2);
             bains.end();
-        }
-        else {}
+        }    
+            
 
         if(frame >= 1800)
         {
