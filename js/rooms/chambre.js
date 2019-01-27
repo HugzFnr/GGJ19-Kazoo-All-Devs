@@ -216,4 +216,7 @@ chambre.end = function(win)
   clearTimeout(chambre.timer);
   clearTimeout(chambre.timerMax);
   chambre.theme.pause();
+
+  if (win==true) manager.wingame();
+  else manager.loosegame();
 }

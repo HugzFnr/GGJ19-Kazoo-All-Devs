@@ -103,7 +103,7 @@ function updateSmoke(lvl)
     else if (lvl==5) endGame("DEFEAT");
 }
 
-function endGame(win)
+function endGame(end)
 {
     clearInterval(heatup);
     clearInterval(frame);
@@ -111,6 +111,9 @@ function endGame(win)
     ctx.clearRect(0,0,1000,1000);
     cuisine.playing = false;
     cuisine.theme.pause();
+
+    if (end=="DEFEAT") manager.loosegame();
+    else manager.wingame();
 }
 
 }

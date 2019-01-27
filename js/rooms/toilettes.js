@@ -224,4 +224,8 @@ toilettes.end = function(win)
   toilettes.ctx.clearRect(0,0,toilettes.cvs.width,toilettes.cvs.height),
   toilettes.playing = false;
   toilettes.theme.pause();
+
+  if (win==true) manager.wingame();
+  else manager.loosegame();
+  
 }

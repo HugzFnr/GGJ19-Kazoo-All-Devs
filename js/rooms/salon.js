@@ -161,7 +161,11 @@ salon.begin = function()
                     tableau[j].y = salon.height;
                     tableau[j].gravite = 0;
 
-                    if(j==14) salon.end();
+                    if(j==14)
+                    {
+                        salon.end();
+                        manager.wingame();
+                    } 
                 }
             else
             if (tableau[j].gravite == 2)
@@ -183,7 +187,11 @@ salon.begin = function()
                 context.drawImage(sprite.VasePete, tableau[j].x , tableau[j].y, sprite.VasePete.width/3, sprite.VasePete.height/3);
 
 
-                if(j==14 || vasesCasses == 3) salon.end();
+                if(j==14 || vasesCasses == 3)
+                {
+                    salon.end();
+                    manager.loosegame();
+                } 
             }
 
             //affichage parent

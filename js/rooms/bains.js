@@ -102,7 +102,11 @@ bains.begin = function()
             context.fillStyle = "lightblue";
             context.fillRect(54, 54, 192, 92);
             context.fillStyle = "black";
-            if(robinet == 0) bains.end();
+            if(robinet == 0) 
+            {
+            bains.end();
+            manager.wingame();
+            }
         }
         else if (remplissage > 160)
         {
@@ -110,12 +114,14 @@ bains.begin = function()
             context.fillRect(20, 20, 300, 150);
             context.fillStyle = "black";
             bains.end();
+            manager.loosegame();
         }
         else {}
 
         if(frame >= 1800)
         {
             bains.end();
+            manager.loosegame();
         }
 
         if(!bains.playing) bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
