@@ -58,8 +58,37 @@ bains.begin = function()
         context.fillRect(bains.width-58, bains.height - 16 - remplissage, 46, remplissage);
         context.fillStyle = "black";
 
+        if(remplissage <= 50)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(54, 54, 46, remplissage);
+            context.fillStyle = "black";
+        }
+        else if (remplissage <= 100)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(95, 95, 81, 46);
+            context.fillStyle = "black";
+        }
+        else if (remplissage <= 150)
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(54, 54, 192, 92);
+            context.fillStyle = "black";
+        }
+        else
+        {
+            context.fillStyle = "lightblue";
+            context.fillRect(20, 20, 300, 150);
+            context.fillStyle = "black";
+        }
 
-
+        //baignoire
+        context.beginPath();
+        context.lineWidth = "4";
+        context.strokeStyle = "black";
+        context.rect(50, 50, 200, 100);
+        context.stroke();
 
     },delta);
     
