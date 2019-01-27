@@ -3,16 +3,15 @@ var manager = {};
 //to do : gérer le score, le temps, les events, les events perdus, les events rates,
 
 
-var entropy = 25; // game ends when it reaches 100
+var entropy = 0; // game ends when it reaches 100
 var score = 0; //PROPOSITION : le score prend +10*minutesSurvécues par seconde et +400*(jeuxactifsenmêmetemps) à chaque mini jeu réussi
 var deltaCycle = 20000; //PROPOSITION : l'intervalle entre deux spawns d'event est de 20s et accélère progressivement
 var cycles = 0; //game's length
 
 //NOUS FAUT UN ECRAN DE FIN = VICTOIRE PCK YA PAS DE DEFAITE EN FAIT
 
-
 manager.boredTimer;
-manager.boredInterval = 2000;
+manager.boredInterval = 10000;
 manager.waitingTime = 7000;
 
 manager.themeTimer;
@@ -25,8 +24,6 @@ manager.themes =
 
 manager.start = function()
 {
-
-
   manager.newCycle();
   manager.boredTimer = setInterval(manager.checkBored, manager.boredInterval)
 
@@ -97,7 +94,6 @@ manager.alert = function(name)
 {
     var room = rooms[name];
 
-    console.log(room);
     room.alerte.replay();
 
     //AFFICHER ALERTE
@@ -108,14 +104,21 @@ manager.alert = function(name)
     room.cvs.onclick = function()
     {
         var name = this.id;
-        rooms[name].begin();
+
         clearInterval(manager.timers[name]);
 
         room.alerte.pause();
 
+
         //EFFACER ALERTE
           room.ctx.clearRect(0,0,room.width,room.height);
+
+              rooms[name].begin();
+
+        if(name != "cuisine")
+        {
         room.cvs.onclick = null;
+      }
     }
 
 
@@ -136,8 +139,9 @@ manager.missed = function(name)
 
   room.ctx.clearRect(0,0,room.width,room.height);
   room.cvs.onclick = null;
+  room.cvs.style.backgroundColor = "";
+  manager.addEntropy(5);
 
-  //EFFACER ALARME
 }
 
 
@@ -154,10 +158,13 @@ manager.playRandGame = function()
 
 manager.wingame = function()
 {
+  score+=400;
+  console.log("score :" + score);
 }
 
 manager.loosegame = function()
 {
+  manager.addEntropy(3);
 }
 
 manager.missgame = function()
@@ -168,6 +175,7 @@ manager.missgame = function()
 manager.addEntropy = function(e)
 {
   entropy += e;
+  console.log(entropy);
   draw.entropy();
 }
 

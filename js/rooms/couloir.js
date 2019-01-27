@@ -175,6 +175,10 @@ function endGame(end)
     ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
     couloir.playing=false;
     couloir.theme.pause();
+
+    if (end=="DEFEAT") manager.loosegame();
+    else manager.wingame();                     
+                             
 }
 
 }

@@ -98,22 +98,30 @@ bains.begin = function()
 
         
         else if (remplissage <= 140 && remplissage > 50)
+
             ctx.drawImage(sprite.bainouare2, 60, 40 , sprite.bainouare2.width/2,sprite.bainouare.height/2);
         
-        else if (remplissage > 140 && remplissage <= 160)        
+        else if (remplissage > 140 && remplissage <= 160)
+        {       
             ctx.drawImage(sprite.bainouare3, 60, 40 , sprite.bainouare3.width/2,sprite.bainouare.height/2);
+            bains.end();
+            manager.wingame();
+        }
 
-        
         else if (remplissage > 160)
         {
             ctx.drawImage(sprite.bainouare4, 60, 40 , sprite.bainouare4.width/2,sprite.bainouare.height/2);
             bains.end();
+            manager.loosegame();
+
         }    
-            
 
         if(frame >= 1800)
         {
             bains.end();
+            if(remplissage < 140 || remplissage >160)
+                manager.loosegame();
+            else manager.wingame();
         }
 
         if(!bains.playing) bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
