@@ -10,6 +10,8 @@ bains.height = 150*zoomRooms;
 bains.playing = false;
 bains.timer;
 
+bains.playing = false;
+
 var frame = 0;
 var delta = 1000/60; // 60 fps trop ouf
 var robinet;
@@ -36,9 +38,7 @@ shortcut.add("F",function()
 
 bains.begin = function()
 {
-
     bains.playing = true;
-
     var canvas = bains.cvs;
     var context = bains.context = canvas.getContext("2d");
 
@@ -65,9 +65,9 @@ bains.begin = function()
         //30*60 fps = 1800 frames
         //h=120 donc 1px toutes les 15 frames
 
-        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=8;
+        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=5;
 
-        if(remplissage <= 158) jauge = remplissage;
+        if(remplissage <= 159) jauge = remplissage;
 
 
         context.fillStyle = "blue";
@@ -80,23 +80,25 @@ bains.begin = function()
             context.fillRect(120, 100, 40, 20);
             context.fillStyle = "black";
         }
-        else if (remplissage <= 100 && remplissage > 50)
+        else if (remplissage <= 140 && remplissage > 50)
         {
             context.fillStyle = "lightblue";
             context.fillRect(120, 80, 80, 40);
             context.fillStyle = "black";
         }
-        else if (remplissage <= 150 && remplissage > 100)
+        else if (remplissage > 140 && remplissage <= 160)
         {
             context.fillStyle = "lightblue";
             context.fillRect(54, 54, 192, 92);
             context.fillStyle = "black";
+            if(robinet == 0) bains.end();
         }
         else if (remplissage > 160)
         {
             context.fillStyle = "lightblue";
             context.fillRect(20, 20, 300, 150);
             context.fillStyle = "black";
+            bains.end();
         }
         else {}
 
@@ -104,7 +106,12 @@ bains.begin = function()
         {
             bains.end();
         }
+<<<<<<< HEAD
 
+=======
+
+        if(!bains.playing) bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
+>>>>>>> fab0c78ab8ed8bf6eb0a6f9d7f338aa80abfa4c9
 
     },delta);
 
@@ -115,4 +122,6 @@ bains.end = function(){
 
     bains.playing = false;
     bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
+
+    bains.playing = false
 }
