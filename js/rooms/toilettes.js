@@ -166,7 +166,6 @@ toilettes.begin = function()
 
   }
 
-
 }
 
 toilettes.end = function(win)
