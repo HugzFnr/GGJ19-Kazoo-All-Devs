@@ -155,9 +155,11 @@ salon.begin = function()
         if(tableau[j].y >= salon.height - hauteurVase)
         {
             tableau[j].gravite = 0;
-            context.fillStyle = "red";
-            context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
-            context.fillStyle = "black";
+            //context.fillStyle = "red";
+            //context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
+            //context.fillStyle = "black";
+            context.drawImage(sprite.VasePete, tableau[j].x , tableau[j].y, largeurVase, hauteurVase);
+
 
             if(j==14 || vasesCasses == 3) salon.end();
         }  
