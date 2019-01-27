@@ -76,7 +76,7 @@ bains.begin = function()
         //30*60 fps = 1800 frames
         //h=120 donc 1px toutes les 15 frames
 
-        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=5;
+        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=3;
 
         if(remplissage <= 159) jauge = remplissage;
 

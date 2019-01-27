@@ -34,7 +34,7 @@ toilettes.begin = function()
   var waitingDelta = 2000;
 
   ctx.textBaseline = "top";
-  ctx.font = '24px Arial';
+  ctx.font = '20px Serif';
 
 
   for(var i in toilettes.letters)
@@ -58,12 +58,12 @@ toilettes.begin = function()
     frame ++;
     //affiche kevin
     var ctx = toilettes.ctx;
-    ctx.clearRect(180,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
+    ctx.clearRect(160,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
 
 
     if(frame%200 <= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentouseHaute, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 180, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 160, 
         /*chambre.height - sprite.bullePenseeParent.height/4*/12, 
         sprite.ChiottesVentouseHaute.width/2, 
         sprite.ChiottesVentouseHaute.height/2);
@@ -71,7 +71,7 @@ toilettes.begin = function()
     else
     if(frame%200 >= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentousePlonge, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 180, 
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 160, 
         /*chambre.height - sprite.bullePenseeParent.height/4*/0, 
         sprite.ChiottesVentousePlonge.width/2, 
         sprite.ChiottesVentousePlonge.height/2);
@@ -154,16 +154,16 @@ toilettes.begin = function()
   {
     var ctx = toilettes.ctx;
     ctx.clearRect(0,0,cvs.width,cvs.height)
-    ctx.strokeStyle = "black";
-    ctx.strokeText(str,10,10);
+    ctx.fillStyle = "white";
+    ctx.fillText(str,10,10);
   }
 
 
   function error()
   {
     toilettes.answered = true;
-    ctx.strokeStyle = "red";
-    ctx.strokeText("X",120,120);
+    ctx.fillStyle = "red";
+    ctx.fillText("X",120,120);
 
     toilettes.life--;
 
@@ -184,8 +184,8 @@ toilettes.begin = function()
     function valid()
     {
       toilettes.answered = true;
-      ctx.strokeStyle = "green";
-      ctx.strokeText("V",120,120);
+      ctx.fillStyle = "green";
+      ctx.fillText("V",120,120);
       setTimeout(generate,switchDelta)
     }
 
@@ -195,8 +195,8 @@ toilettes.begin = function()
   function valid()
   {
     toilettes.answered = true;
-    ctx.strokeStyle = "green";
-    ctx.strokeText("V",120,120);
+    ctx.fillStyle = "green";
+    ctx.fillText("V",120,120);
 
     setTimeout(generate,switchDelta)
 
