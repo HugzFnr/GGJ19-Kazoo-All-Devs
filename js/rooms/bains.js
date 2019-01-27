@@ -9,7 +9,7 @@ bains.height = 150*zoomRooms;
 
 var frame = 0;
 var delta = 1000/60; // 60 fps trop ouf
-
+var robinet;
 
 shortcut.add("A",function() 
     {
