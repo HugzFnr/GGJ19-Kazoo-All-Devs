@@ -39,13 +39,13 @@ chambre.begin = function()
         }
   });
 
-  chambre.timerMax = setTimeout(function()
-{
-    if(chambre.playing) // Limite de temps dépassée
-    {
-        chambre.end(true);
-    }
-},gameDur)
+    chambre.timerMax = setTimeout(function()
+  {
+      if(chambre.playing) // Limite de temps dépassée
+      {
+          chambre.end(true);
+      }
+  },gameDur)
 
 
     ctx = chambre.ctx = chambre.cvs.getContext("2d");
@@ -58,6 +58,8 @@ chambre.begin = function()
     var bigDelta = 3000;
     var lilDelta = 1500;
     genQuestion();
+
+
 
     function genQuestion()
     {
@@ -101,6 +103,9 @@ chambre.begin = function()
     function write(str)
     {
       var ctx = chambre.ctx;
+
+      ctx.drawImage(sprite.bullePenseeKevin, 20 , 20, 200, 80);
+
       ctx.strokeStyle = "black";
       ctx.strokeText(str,10,10);
     }
