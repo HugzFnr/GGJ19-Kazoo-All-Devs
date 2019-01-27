@@ -13,7 +13,8 @@ var cw = cuisine.width;
 var ch = cuisine.height;
 
 //Le canvas
-//cuisine.cvs;
+cuisine.cvs;
+cuisine.playing = false;
 
 var boxCook = {
     x : 70,
@@ -32,6 +33,7 @@ var boxSmoke =
 
 cuisine.begin = function ()
 {
+    cuisine.playing = true;
 
   var ctx = cuisine.cvs.getContext("2d");
 
@@ -100,6 +102,7 @@ function endGame(end)
     clearInterval(frame);
     cuisine.cvs.onclick = null;
     ctx.clearRect(0,0,cw,ch);
+    cuisine.playing = false;
 }
 
 }

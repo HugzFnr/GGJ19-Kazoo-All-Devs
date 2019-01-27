@@ -15,10 +15,12 @@ var ch = couloir.height;
 
 //Le canvas
 couloir.cvs;
+couloir.playing = false;
 
 couloir.begin = function()
 {
   var ctx = couloir.cvs.getContext("2d");
+  couloir.playing=true;
 
   var nbFails = 2;
   var pos=0;
@@ -135,8 +137,10 @@ function updateLegos(tab)
 
         if (tab[iter]!=null) {
         tab[iter].x-=speed;
-        ctx.fillStyle = "red";
-        ctx.fillRect(tab[iter].x,tab[iter].y,tab[iter].w,tab[iter].h);
+
+        if (tab[iter].y>50) ctx.drawImage(sprite.LegoOrange, tab[iter].x,tab[iter].y);
+        else ctx.drawImage(sprite.LegoRose, tab[iter].x,tab[iter].y)
+        
         }
         
     }
@@ -145,9 +149,10 @@ function updateLegos(tab)
 function endGame(end)
 {
     console.log(end + " COULOIR");
-    ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
     clearInterval(frame);
     clearInterval(spawn);
+    ctx.clearRect(0,0,couloir.cvs.width,couloir.cvs.height);
+    couloir.playing=false;
 }
 
 }
