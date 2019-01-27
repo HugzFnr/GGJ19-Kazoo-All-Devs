@@ -151,3 +151,18 @@ manager.wingame = function()
 manager.loosegame = function()
 {
 }
+
+manager.missgame = function()
+{
+
+}
+
+manager.addEntropy = function(e)
+{
+  entropy += e;
+}
+
+manager.addScore = function(s)
+{
+  score += s;
+}
