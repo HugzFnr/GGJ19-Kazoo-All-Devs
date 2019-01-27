@@ -28,7 +28,6 @@ toilettes.begin = function()
   var cvs = toilettes.cvs;
   var ctx = cvs.getContext("2d");
 
-  var KEY;
   var PRESS;
   var switchDelta = 1500;
   var waitingDelta = 2000;
@@ -59,23 +58,41 @@ toilettes.begin = function()
     //affiche kevin
     var ctx = toilettes.ctx;
     ctx.clearRect(160,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
+    ctx.clearRect(20,120, 80, 80);
+
 
 
     if(frame%200 <= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentouseHaute, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 160, 
-        /*chambre.height - sprite.bullePenseeParent.height/4*/12, 
+        160, 
+        12, 
         sprite.ChiottesVentouseHaute.width/2, 
         sprite.ChiottesVentouseHaute.height/2);
     
     else
     if(frame%200 >= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentousePlonge, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 160, 
-        /*chambre.height - sprite.bullePenseeParent.height/4*/0, 
+        160, 
+        0, 
         sprite.ChiottesVentousePlonge.width/2, 
         sprite.ChiottesVentousePlonge.height/2);
     
+    if(frame%60 <= 30)
+    {
+      ctx.drawImage(sprite[toilettes.KEY+"1"], 
+        20, 
+        120, 
+        sprite[toilettes.KEY+"1"].width, 
+        sprite[toilettes.KEY+"1"].height);
+      
+    }
+    else{
+      ctx.drawImage(sprite[toilettes.KEY+"2"], 
+        20, 
+        120, 
+        sprite[toilettes.KEY+"2"].width, 
+        sprite[toilettes.KEY+"2"].height);
+    }
 
     //rooms.chambre.begin()
     
@@ -100,13 +117,13 @@ toilettes.begin = function()
 
       do {
             NEW = toilettes.letters[rand(0,toilettes.letters.length-1)];
-      } while (NEW == KEY);
-      KEY = NEW;
+      } while (NEW == toilettes.KEY);
+      toilettes.KEY = NEW;
       PRESS = rand(0,3) > 0;
 
       toilettes.answered = false;
       ctx.font = '24px Serif';
-      write(( PRESS ? "" : "DON'T " )+ "PRESS "+KEY)
+      write(( PRESS ? "" : "DON'T " )+ "PRESS "+toilettes.KEY)
 
       //LAISSÉ PASSÉ
       toilettes.timer = setTimeout(function()
@@ -135,7 +152,7 @@ toilettes.begin = function()
     letter= letter.toUpperCase();
     if(toilettes.playing && toilettes.answered == false)
     {
-        if(letter == KEY)
+        if(letter == toilettes.KEY)
         {
           toilettes.answered = true;
 
