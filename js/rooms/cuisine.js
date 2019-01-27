@@ -88,11 +88,12 @@ function drawRect(color,box)
 
 function updateSmoke(lvl)
 {
-    if (lvl==4) drawRect("black",boxSmoke);
-    else if (lvl==3) drawRect("gray",boxSmoke);
-    else if (lvl==2) drawRect("silver",boxSmoke);
-    else if (lvl==5) endGame(false);
-    else drawRect("green",boxSmoke);
+    if (lvl==4) ctx.drawImage(sprite.smoke5,boxSmoke.x,boxSmoke.y);
+    else if (lvl==3) ctx.drawImage(sprite.smoke4,boxSmoke.x,boxSmoke.y);
+    else if (lvl==1) ctx.drawImage(sprite.smoke2,boxSmoke.x,boxSmoke.y);
+    else if (lvl==2) ctx.drawImage(sprite.smoke3,boxSmoke.x,boxSmoke.y);
+    else if (lvl==0) ctx.drawImage(sprite.smoke1,boxSmoke.x,boxSmoke.y);
+    else if (lvl==5) endGame("DEFEAT");
 }
 
 function endGame(win)
