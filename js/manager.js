@@ -31,7 +31,7 @@ manager.start = function()
   manager.boredTimer = setInterval(manager.checkBored, manager.boredInterval)
 
   sound.musicNOEVENT.loop = true;
-  sound.musicNOEVENT.volume = 0.6;
+  sound.musicNOEVENT.volume = 0.4;
   sound.musicNOEVENT.replay();
   manager.themeTimer = setInterval(function()
   {
