@@ -7,6 +7,7 @@ bains.y = (80 + 0)*zoomRooms;
 bains.width = 350*zoomRooms;
 bains.height = 150*zoomRooms;
 
+bains.playing = false;
 bains.timer;
 
 var frame = 0;
@@ -14,18 +15,18 @@ var delta = 1000/60; // 60 fps trop ouf
 var robinet;
 
 //remplissage ON / OFF
-shortcut.add("F",function() 
+shortcut.add("F",function()
     {
-        robinet = 1;
+        if(bains.playing)robinet = 1;
     },{
         'type':'keydown',
         'propagate':false,
         'target':document
     });
 
-shortcut.add("F",function() 
+shortcut.add("F",function()
     {
-        robinet = 0;
+        if(bains.playing)robinet = 0;
     },{
         'type':'keyup',
         'propagate':false,
@@ -34,7 +35,10 @@ shortcut.add("F",function()
 
 
 bains.begin = function()
-{        
+{
+
+    bains.playing = true;
+
     var canvas = bains.cvs;
     var context = bains.context = canvas.getContext("2d");
 
@@ -95,20 +99,20 @@ bains.begin = function()
             context.fillStyle = "black";
         }
         else {}
-        
+
         if(frame >= 1800)
         {
             bains.end();
         }
-        
+
 
     },delta);
-    
+
 }
 
 bains.end = function(){
     clearInterval(bains.timer);
 
+    bains.playing = false;
     bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
 }
-
