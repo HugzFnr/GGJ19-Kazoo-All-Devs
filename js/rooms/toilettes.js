@@ -34,7 +34,7 @@ toilettes.begin = function()
   var waitingDelta = 2000;
 
   ctx.textBaseline = "top";
-  ctx.font = '36px serif';
+  ctx.font = '24px Arial';
 
 
   for(var i in toilettes.letters)
@@ -58,23 +58,23 @@ toilettes.begin = function()
     frame ++;
     //affiche kevin
     var ctx = toilettes.ctx;
-    ctx.clearRect(0,90, sprite.ChiottesVentouseHaute.width/6 + 20, sprite.ChiottesVentouseHaute.height/6);
+    ctx.clearRect(180,0, sprite.ChiottesVentousePlonge.width, sprite.ChiottesVentousePlonge.height);
 
 
-    if(frame%100 <= 50 && toilettes.playing)
+    if(frame%200 <= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentouseHaute, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 10, 
-        /*chambre.height - sprite.bullePenseeParent.height/4*/100, 
-        sprite.ChiottesVentouseHaute.width/6, 
-        sprite.ChiottesVentouseHaute.height/6);
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 180, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/12, 
+        sprite.ChiottesVentouseHaute.width/2, 
+        sprite.ChiottesVentouseHaute.height/2);
     
     else
-    if(frame%100 >= 50 && toilettes.playing)
+    if(frame%200 >= 100 && toilettes.playing)
       ctx.drawImage(sprite.ChiottesVentousePlonge, 
-        /*chambre.width - sprite.bullePenseeParent.width/4*/ 0, 
-        /*chambre.height - sprite.bullePenseeParent.height/4*/100, 
-        sprite.ChiottesVentousePlonge.width/6, 
-        sprite.ChiottesVentousePlonge.height/6);
+        /*chambre.width - sprite.bullePenseeParent.width/4*/ 180, 
+        /*chambre.height - sprite.bullePenseeParent.height/4*/0, 
+        sprite.ChiottesVentousePlonge.width/2, 
+        sprite.ChiottesVentousePlonge.height/2);
     
 
     //rooms.chambre.begin()
