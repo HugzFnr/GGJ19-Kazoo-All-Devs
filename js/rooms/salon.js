@@ -15,11 +15,9 @@ salon.begin = function()
 {
     var direction = 0;
 
-    //dimensions des vases
-    var x = 0;
-    var y = 0;
-    var largeur = 50;
-    var hauteur = 50;
+    //vases
+    var largeurVase = sprite.Vase.width;
+    var hauteurVase = sprite.Vase.height;
 
     //tableau des  vases
     var tableau = [];
@@ -27,17 +25,17 @@ salon.begin = function()
     for(i = 0; i<15 ; i++)
     {
         var vase = {};
-        vase.x = rand(0,salon.width-largeur);
+        vase.x = rand(0,salon.width-largeurVase);
         vase.y = 0;
         vase.gravite = 0;
         tableau.push(vase);
     }
 
     //position parent
-    var largeur2 = 40;
-    var hauteur2 = 100;
-    var x2 = (salon.width - largeur2) /2;
-    var y2 = salon.height - hauteur2;
+    var largeurParent = sprite.AdulteCourseDCouleur.width/8;
+    var hauteurParent = sprite.AdulteCourseDCouleur.height/8;
+    var x2 = (salon.width - largeurParent) /2;
+    var y2 = salon.height - hauteurParent;
 
 
     shortcut.add("Left",function() 
@@ -78,10 +76,7 @@ salon.begin = function()
 
     var context = salon.context =  canvas.getContext("2d");
     
-    
-    
-
-    context.fillRect(x, y, largeur, hauteur);
+    //context.fillRect(x, y, largeurVase, hauteurVase);
 
    //ctx.clearRect(20, 20, 100, 50);
 
@@ -101,13 +96,25 @@ salon.begin = function()
         x2 += direction*2;
     }
 
-    if(direction == 1 && x2 != salon.width - largeur2)
+    if(direction == 1 && x2 != salon.width - largeurParent)
     {
         x2 += direction*2;
     }
 
-    context.fillRect(x2, y2, largeur2, hauteur2);
-
+    //parent
+    //context.fillRect(x2, y2, largeurParent, hauteurParent);
+    if(frame%30 <= 15 && direction != 0)
+    {
+        context.drawImage(sprite.AdulteCourseDCouleur, x2 ,y2, sprite.AdulteCourseDCouleur.width/8, sprite.AdulteCourseDCouleur.height/8);
+    }    
+    else if(frame%30 > 15 && direction != 0)
+    {
+        context.drawImage(sprite.AdulteCourseGCouleur, x2 ,y2, sprite.AdulteCourseGCouleur.width/8, sprite.AdulteCourseGCouleur.height/8);
+    }
+    else
+    {
+        context.drawImage(sprite.AdulteBrasLeve, x2 ,y2, sprite.AdulteBrasLeve.width/8, sprite.AdulteBrasLeve.height/8);
+    }
 
     for(j=0;j<15;j++)
     {
@@ -117,14 +124,14 @@ salon.begin = function()
         }
 
         //détection de collision
-        if (tableau[j].x < x2 + largeur2 &&
-            tableau[j].x + largeur > x2 &&
-            tableau[j].y < y2 + hauteur2 &&
-            tableau[j].y + hauteur > y2 &&
+        if (tableau[j].x < x2 + largeurParent &&
+            tableau[j].x + largeurVase > x2 &&
+            tableau[j].y < y2 + hauteurParent &&
+            tableau[j].y + hauteurVase > y2 &&
             tableau[j].gravite == 1)
             {
                 //tableau[j] = null; VOIR AVEC YOUNES
-                tableau[j].x = -largeur;
+                tableau[j].x = -largeurVase;
                 tableau[j].y = salon.height;
                 tableau[j].gravite = 0;
 
@@ -134,19 +141,21 @@ salon.begin = function()
         if (tableau[j].gravite == 1)
         {
             tableau[j].y+=3;
-            context.fillRect(tableau[j].x, tableau[j].y, largeur, hauteur);
+            context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
+
+            context.drawImage(sprite.Vase, tableau[j].x , tableau[j].y, sprite.Vase.width/8, sprite.Vase.height/8);
         }
 
-        if(tableau[j].y >= salon.height - hauteur && tableau[j].gravite == 1)
+        if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 1)
         {
             vasesCasses++;
         }
 
-        if(tableau[j].y >= salon.height - hauteur)
+        if(tableau[j].y >= salon.height - hauteurVase)
         {
             tableau[j].gravite = 0;
             context.fillStyle = "red";
-            context.fillRect(tableau[j].x, tableau[j].y, largeur, hauteur);
+            context.fillRect(tableau[j].x, tableau[j].y, largeurVase, hauteurVase);
             context.fillStyle = "black";
 
             if(j==14 || vasesCasses == 3) salon.end();
