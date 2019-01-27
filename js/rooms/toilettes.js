@@ -8,7 +8,9 @@ toilettes.y = (80 + 0)*zoomRooms;
 toilettes.width = 250*zoomRooms;
 toilettes.height = 150*zoomRooms;
 toilettes.playing = false;
-
+toilettes.timerMax;
+toilettes.timer;
+toilettes.life;
 
 toilettes.begin = function()
 {
@@ -28,6 +30,13 @@ toilettes.begin = function()
 
     shortcut.add(letters[i],f)
 
+
+    toilettes.timerMax = setTimeout(function()
+    {
+      //Finir le jeu
+
+    }, gameDur)
+
   }
 
 
@@ -36,7 +45,7 @@ toilettes.begin = function()
   function press(letter)
   {
     letter= letter.toUpperCase();
-    
+
   }
 
 

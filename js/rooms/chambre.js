@@ -10,15 +10,20 @@ chambre.height = 150*zoomRooms;
 
 chambre.shortcut;
 chambre.playing = false;
+chambre.life;
+chambre.timer;
+chambre.answered = false;
 
 chambre.begin = function()
 {
     chambre.playing = true;
 
+    chambre.life = 3;
     chambre.shortcut = shortcut.add("Space",function()
     {
-        if(chambre.playing)
+        if(chambre.playing && chambre.answered == false)
         {
+            clearTimeout(chambre.timer);
             yell();
             if(C == A*B) //Valide
             {
@@ -28,9 +33,16 @@ chambre.begin = function()
             {
               valid();
             }
-            clearTimeout(timer);
         }
   });
+
+  chambre.timerMax = setTimeout(function()
+{
+    if(chambre.playing) // Limite de temps dépassée
+    {
+        chambre.end(true);
+    }
+},gameDur)
 
 
     ctx = chambre.ctx = chambre.cvs.getContext("2d");
@@ -41,12 +53,15 @@ chambre.begin = function()
     var B = 0;
     var C = 0;
     var timer;
-    var delta = 6000;
+    var bigDelta = 2000;
+    var lilDelta = 1500;
     genQuestion();
 
     function genQuestion()
     {
+      chambre.answered = false
       ctx.clearRect(0,0,chambre.cvs.width,chambre.cvs.height);
+
 
       A = rand(0,9);
       B = rand(0,9);
@@ -61,17 +76,24 @@ chambre.begin = function()
       }
 
       write(A+" x "+B+" = "+C);
-      timer = setTimeout(function()
+
+      //Timer attente entre question
+      chambre.timer = setTimeout(function()
       {
 
-        if(true)
+        if(C == A*B)
         {
+            valid();
+        }
+        else
+        {
+            error();
 
         }
 
 
-        genQuestion();
-      },delta)
+        //genQuestion();
+      },bigDelta);
     }
 
     function write(str)
@@ -90,28 +112,45 @@ chambre.begin = function()
 
     function error()
     {
+      chambre.answered = true;
       ctx.strokeStyle = "red";
       ctx.strokeText("X",120,120);
 
-      //GAMEOVER ou pas
-      chambre.end();
+      chambre.life--;
+
+
+      if(chambre.life <= 0)
+      {
+          setTimeout(function()
+          {
+            chambre.end(false)
+          }
+        ,lilDelta);
+      }
+      else {
+
+        setTimeout(genQuestion,lilDelta);
+      }
+
 
     }
 
     function valid()
     {
+      chambre.answered = true;
       ctx.strokeStyle = "green";
       ctx.strokeText("V",120,120);
-      setTimeout(genQuestion,1500)
+      setTimeout(genQuestion,lilDelta)
     }
 
 
 }
 
 
-chambre.end = function()
+chambre.end = function(win)
 {
   ctx.clearRect(0,0,chambre.cvs.width,chambre.cvs.height);
   chambre.playing = false;
-
+  clearTimeout(chambre.timer);
+  clearTimeout(chambre.timerMax);
 }
