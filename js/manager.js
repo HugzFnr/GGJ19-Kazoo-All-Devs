@@ -12,7 +12,7 @@ var cycles = 0; //game's length
 
 
 manager.boredTimer;
-manager.boredInterval = 2000;
+manager.boredInterval = 10000;
 manager.waitingTime = 7000;
 
 manager.themeTimer;
@@ -97,7 +97,6 @@ manager.alert = function(name)
 {
     var room = rooms[name];
 
-    console.log(room);
     room.alerte.replay();
 
     //AFFICHER ALERTE
@@ -108,11 +107,12 @@ manager.alert = function(name)
     room.cvs.onclick = function()
     {
         var name = this.id;
-        rooms[name].begin();
+
         clearInterval(manager.timers[name]);
 
         room.alerte.pause();
 
+        rooms[name].begin();
         //EFFACER ALERTE
           room.ctx.clearRect(0,0,room.width,room.height);
         room.cvs.onclick = null;
