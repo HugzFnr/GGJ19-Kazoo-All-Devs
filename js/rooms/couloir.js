@@ -1,7 +1,11 @@
 couloir = {};
 rooms.couloir = couloir;
 
-
+couloir.init = function()
+{
+couloir.theme   =  sound.musicCouloir;
+couloir.alerte  =  sound.BruitPleure;
+}
 couloir.x = (100 + 200)*zoomRooms;
 couloir.y = (80 + 150)*zoomRooms;
 
@@ -83,7 +87,7 @@ var spawn = setInterval(function()
   }, deltaT);
 
 shortcut.add("Down",function() {
-    pos = 1;
+    if (couloir.playing) pos = 1;
 },{
     'type':'keydown',
     'propagate':false,
@@ -91,7 +95,7 @@ shortcut.add("Down",function() {
 });
 
 shortcut.add("Up",function() {
-    pos = 0;
+    if ((couloir.playing) && (pos = 1)) pos = 0;
 },{
     'type':'keydown',
     'propagate':false,

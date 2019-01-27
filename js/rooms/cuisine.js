@@ -4,6 +4,11 @@ rooms.cuisine = cuisine;
 cuisine.x = (100 + 200)*zoomRooms;
 cuisine.y = (80 + 250)*zoomRooms;
 
+cuisine.init = function()
+{
+cuisine.theme   =  sound.musicCuisine;
+cuisine.alerte  =  sound.EventCuisine;
+}
 cuisine.width = 300*zoomRooms;
 cuisine.height = 150*zoomRooms;
 
@@ -83,16 +88,17 @@ cuisine.begin = function ()
 function drawRect(color,box)
 {
     ctx.fillStyle = color;
-    ctx.fillRect(box.x,box.y,box.w,box.h);
+    //ctx.fillRect(box.x,box.y,box.w,box.h);
 }
 
 function updateSmoke(lvl)
 {
-    if (lvl==4) drawRect("black",boxSmoke);
-    else if (lvl==3) drawRect("gray",boxSmoke);
-    else if (lvl==2) drawRect("silver",boxSmoke);
-    else if (lvl==5) endGame(false);
-    else drawRect("green",boxSmoke);
+    if (lvl==4) ctx.drawImage(sprite.smoke5,boxSmoke.x,boxSmoke.y);
+    else if (lvl==3) ctx.drawImage(sprite.smoke4,boxSmoke.x,boxSmoke.y);
+    else if (lvl==1) ctx.drawImage(sprite.smoke2,boxSmoke.x,boxSmoke.y);
+    else if (lvl==2) ctx.drawImage(sprite.smoke3,boxSmoke.x,boxSmoke.y);
+    else if (lvl==0) ctx.drawImage(sprite.smoke1,boxSmoke.x,boxSmoke.y);
+    else if (lvl==5) endGame("DEFEAT");
 }
 
 function endGame(win)

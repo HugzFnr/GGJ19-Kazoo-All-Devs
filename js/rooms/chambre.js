@@ -1,7 +1,10 @@
 chambre = {};
 rooms.chambre = chambre;
-
-
+chambre.init = function()
+{
+chambre.theme   =  sound.musicChambre;
+chambre.alerte  =  sound.BruitHelp;
+}
 chambre.x = (100 + 500)*zoomRooms;
 chambre.y = (80 + 250)*zoomRooms;
 

@@ -2,6 +2,11 @@ toilettes = {};
 rooms.toilettes = toilettes;
 
 
+toilettes.init = function () {
+toilettes.theme   =  sound.musicToilettes;
+toilettes.alerte  =  sound.EventToilet;
+}
+
 toilettes.x = (100 + 550)*zoomRooms;
 toilettes.y = (80 + 0)*zoomRooms;
 

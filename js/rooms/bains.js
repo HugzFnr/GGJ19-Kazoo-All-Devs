@@ -1,6 +1,8 @@
 bains = {};
 rooms.bains = bains;
 
+
+
 bains.x = (100 + 200)*zoomRooms;
 bains.y = (80 + 0)*zoomRooms;
 
@@ -16,28 +18,37 @@ var frame = 0;
 var delta = 1000/60; // 60 fps trop ouf
 var robinet;
 
-//remplissage ON / OFF
-shortcut.add("F",function()
-    {
-        if(bains.playing)robinet = 1;
-    },{
-        'type':'keydown',
-        'propagate':false,
-        'target':document
-    });
 
-shortcut.add("F",function()
-    {
-        if(bains.playing)robinet = 0;
-    },{
-        'type':'keyup',
-        'propagate':false,
-        'target':document
-    });
+bains.init = function()
+{
+  bains.theme = sound.musicBain;
+  bains.alerte = sound.EventBain;
+}
 
 
 bains.begin = function()
 {
+
+  //remplissage ON / OFF
+  shortcut.add("F",function()
+      {
+          if(bains.playing)robinet = 1;
+      },{
+          'type':'keydown',
+          'propagate':false,
+          'target':document
+      });
+
+  shortcut.add("F",function()
+      {
+          if(bains.playing)robinet = 0;
+      },{
+          'type':'keyup',
+          'propagate':false,
+          'target':document
+      });
+
+
     bains.playing = true;
     var canvas = bains.cvs;
     var context = bains.context = canvas.getContext("2d");

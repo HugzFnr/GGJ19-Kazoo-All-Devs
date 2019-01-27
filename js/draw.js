@@ -1,12 +1,9 @@
 var draw = {},sprite={};
 
 
-draw.imgs = [
-"chambre","bains","toilettes","salon","cuisine","couloir",
-"AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur",
-"KevinLacheVase","KevinTientVase","LegoOrange",
-"LegoRose","Vase","VasePete"];
-
+draw.imgs = ["AdulteBrasLeveCouleur", "AdulteCourseDCouleur","AdulteCourseGCouleur","KevinLacheVase",
+"KevinTientVase","LegoOrange","LegoRose","Vase","VasePete","smoke1","smoke2","smoke3","smoke4","smoke5",
+"DominiqueCavale11","DominiqueCavale22","DominiqueCavale33","DominiqueCavale44"];
 
 draw.init = function(callb)
 {
@@ -55,6 +52,8 @@ draw.initRoom = function()
 			cvs.style.top = room.y+'px';
 			cvs.style.padding = '0px';
 			cvs.style.margin = '0px';
+
+		//	cvs.style.backgroundImage = "url("+sprite[i].src+")";
 
 			room.ctx = cvs.getContext("2d");
 
