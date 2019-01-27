@@ -64,7 +64,10 @@ chambre.begin = function()
       timer = setTimeout(function()
       {
 
-        if()
+        if(true)
+        {
+
+        }
 
 
         genQuestion();
