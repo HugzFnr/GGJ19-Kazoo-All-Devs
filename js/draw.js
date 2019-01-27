@@ -52,6 +52,8 @@ draw.initRoom = function()
 			cvs.style.padding = '0px';
 			cvs.style.margin = '0px';
 
+			room.ctx = cvs.getContext("2d");
+
 			map.appendChild(cvs);
 
 

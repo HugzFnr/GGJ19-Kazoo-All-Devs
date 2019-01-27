@@ -52,8 +52,7 @@ chambre.begin = function()
     var A = 0;
     var B = 0;
     var C = 0;
-    var timer;
-    var bigDelta = 2000;
+    var bigDelta = 3000;
     var lilDelta = 1500;
     genQuestion();
 
