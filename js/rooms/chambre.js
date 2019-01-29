@@ -25,7 +25,7 @@ chambre.begin = function()
 
     
 
-    chambre.life = 3;
+    chambre.life = 2;
     chambre.shortcut = shortcut.add("Space",function()
     {
         if(chambre.playing && chambre.answered == false)

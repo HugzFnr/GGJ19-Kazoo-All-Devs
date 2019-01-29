@@ -154,7 +154,7 @@ manager.playRandGame = function()
 
 manager.wingame = function()
 {
-  addScore(400);
+  manager.addScore(400*1);
   console.log("score :" + score);
 }
 
@@ -173,7 +173,7 @@ manager.addEntropy = function(e)
   entropy += e;
   draw.entropy();
 
-	if(entropy >= 10)
+	if(entropy >= 100)
 	{
 		endgame();
 	}
@@ -198,11 +198,11 @@ function endgame()
 	map.style.display = "none";
 	end.style.backgroundImage = "url("+sprite.KevinDabEcranFin.src+")";
 	ctx = end.getContext("2d");
-  ctx.fillStyle="purple";
+  ctx.fillStyle="fuchsia";
 	ctx.font = '40px Calibri';
-  ctx.fillText(score,365,102);
-  ctx.fillStyle = "white";
-	ctx.fillText("mdr j'en ai plus",365,150);
+  ctx.fillText(score,385,102);
+  ctx.fillStyle = "aqua";
+	ctx.fillText("not featured yet",385,150);
 }
 
 
