@@ -198,10 +198,11 @@ function endgame()
 	map.style.display = "none";
 	end.style.backgroundImage = "url("+sprite.KevinDabEcranFin.src+")";
 	ctx = end.getContext("2d");
-	ctx.fillStyle = "white";
-	ctx.font = '40px Serif';
-	ctx.fillText(score,520,260);
-	ctx.fillText("mdr j'en ai plus",520,360);
+  ctx.fillStyle="purple";
+	ctx.font = '40px Calibri';
+  ctx.fillText(score,365,102);
+  ctx.fillStyle = "white";
+	ctx.fillText("mdr j'en ai plus",365,150);
 }
 
 
