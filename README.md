@@ -13,7 +13,9 @@ The rest of the controls are indicated in game.
 P.S. : you may need more than 2 arms ;)
 
 
+
 **Credits**
+
 Game designers and developpers : Younès RABII, Guillaume GROSSE, Hugo FOURNIER
 
 Music and sound designer : Roxane Pilot
