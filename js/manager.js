@@ -173,7 +173,7 @@ manager.addEntropy = function(e)
   entropy += e;
   draw.entropy();
 
-	if(entropy >= 100)
+	if(entropy >= 10)
 	{
 		endgame();
 	}
@@ -194,7 +194,7 @@ function endgame()
 	
 	end.style.display = "block";
 	end.width = 1200;
-	end.height = 1000;
+	end.height = 600;
 	map.style.display = "none";
 	end.style.backgroundImage = "url("+sprite.KevinDabEcranFin.src+")";
 	ctx = end.getContext("2d");
