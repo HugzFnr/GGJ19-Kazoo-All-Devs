@@ -54,19 +54,24 @@ chambre.begin = function()
 
 
     if(frame%100 <= 50 && chambre.playing)
+    {
       ctx.drawImage(sprite.KevinChambre1, 
         10, 
         100, 
         sprite.KevinChambre1.width/6, 
         sprite.KevinChambre1.height/6);
+        ctx.drawImage(sprite.space1,100,130);
+      }
     
-    else
-    if(frame%100 >= 50 && chambre.playing)
+    else if(frame%100 >= 50 && chambre.playing)
+    {
       ctx.drawImage(sprite.KevinChambre2, 
         0, 
         100, 
         sprite.KevinChambre2.width/6, 
         sprite.KevinChambre2.height/6);
+        ctx.drawImage(sprite.space2,100,130);
+      }
     
 
     //rooms.chambre.begin()
@@ -104,7 +109,7 @@ chambre.begin = function()
       A = rand(0,9);
       B = rand(0,9);
 
-      if(rand(0,2) == 0) // Fausse réponse
+      if(rand(0,1) == 0) // Fausse réponse
       {
         C = A*B + rand(1,Math.min(A*B,12))*(-1+2*rand(0,1))
       }

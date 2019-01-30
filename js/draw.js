@@ -8,7 +8,7 @@ draw.imgs = ["KevinDabEcranFin","kevinAlertchambre","entropieVide","entropiePlei
 "bullePenseeParent","KevinChambre1","KevinChambre2","ChiottesVentouseHaute","ChiottesVentousePlonge","CookingRight","CookingLeft",
 "kevinAlertcouloir","kevinAlertcuisine","kevinAlertbains","kevinAlertsalon","kevinAlerttoilettes",
 "left1","left2","right1","right2","C1","C2","H1","H2","I1","I2","T1","T2",
-"Bainouare","Bainouare1","Bainouare2","Bainouare3","Bainouare4","up1","up2","down1","down2"];
+"Bainouare","Bainouare1","Bainouare2","Bainouare3","Bainouare4","up1","up2","down1","down2","space1","space2","F1","F2"];
 
 draw.init = function(callb)
 {

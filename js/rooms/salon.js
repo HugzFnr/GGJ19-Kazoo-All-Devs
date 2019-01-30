@@ -132,12 +132,12 @@ salon.begin = function()
         //déplacements parent
         if(direction == -1 && x2 >= 0)
         {
-            x2 += direction*2;
+            x2 += direction*1;
         }
 
         if(direction == 1 && x2 <= salon.width - largeurParent)
         {
-            x2 += direction*2;
+            x2 += direction*1;
         }
 
 
@@ -187,10 +187,11 @@ salon.begin = function()
                 context.drawImage(sprite.VasePete, tableau[j].x , tableau[j].y, sprite.VasePete.width/3, sprite.VasePete.height/3);
 
 
-                if(j==14 || vasesCasses == 2)
+                if(j==14 && vasesCasses == 2)
                 {
                     salon.end(false);
-                } 
+                }
+                else if (j==14) salon.end(true); 
             }
 
             //affichage parent

@@ -6,13 +6,14 @@ var manager = {};
 var entropy = 0; // game ends when it reaches 100
 var score = 0;
 var deltaCycle = 21000;
-var cycles = 0; //game's length
-
-var multiScore = 1;
+var cycles = 0;
 
 manager.boredTimer;
 manager.boredInterval = 10000;
 manager.waitingTime = 7000;
+var bonusProba = 0;
+var deltaBonus = 35000;
+var gamelength = 0; //in seconds
 
 manager.themeTimer;
 manager.timers = [];
@@ -29,8 +30,26 @@ manager.start = function()
   sound.musicNOEVENT.loop = true;
   sound.musicNOEVENT.volume = 0.4;
   sound.musicNOEVENT.replay();
+
+  manager.countSeconds = setInterval(function()
+  {
+    gamelength ++;
+    if (gamelength%7==0) { //every 7 seconds, bonus spawns get faster
+      console.log(deltaBonus, "temps", gamelength);
+      if (deltaBonus>1000) deltaBonus -= Acceleration;
+      if (deltaBonus<1000) deltaBonus=1000;
+      
+       } 
+      if ((gamelength*1000)%deltaBonus == 0) 
+       {
+         manager.playRandGame();     
+    } 
+    
+  },1000);
+
   manager.themeTimer = setInterval(function()
   {
+
     for(i in rooms)
     {
       var room = rooms[i];
@@ -44,6 +63,8 @@ manager.start = function()
 
   },7000)
 
+
+
 }
 
 
@@ -55,6 +76,17 @@ manager.newCycle = function()
 
   setTimeout(manager.newCycle,deltaCycle);
 
+}
+
+manager.bonusCycle = function() //unused
+{
+  if (rand(0,Acceleration)<bonusProba) {
+    console.log("bonus !")
+    manager.playRandGame();
+  }
+  //starts at 0 out of Acceleration probability to spawn a bonus alert, reaching 100% chance
+  // to spawn a bonus event every 7 seconds after 280s of game
+ 
 }
 
 manager.checkBored = function()
@@ -143,15 +175,13 @@ manager.missed = function(name)
 manager.blink = function(name,win)
 {
   var room = rooms[name];
-  console.log(rooms +" la room : ",rooms[name]);
-   
+
   if (win) room.ctx.fillStyle = "lime";
   else room.ctx.fillStyle = "red";
   room.ctx.fillRect(0,0,room.width,room.height);
   setTimeout(function(){
     room.ctx.clearRect(0,0,room.width,room.height);
   },500);
-  console.log("ou est le rect?");
 }
 
 
@@ -168,7 +198,7 @@ manager.playRandGame = function()
 
 manager.wingame = function(name)
 {
-  manager.addScore(400*1);
+  manager.addScore(400*(1+manager.getState().playing.length)); //score is multiplied by the numberof active games
   manager.blink(name,true);
   console.log("score :" + score);
 }
@@ -214,9 +244,10 @@ function endgame()
   {
     muteMe(sound.GameOverEntropie);
     sound.GameOverContinue.play();
-    console.log("switch");
-  },6500);	
-	
+  },6500);
+
+  clearInterval(manager.countSeconds);
+  
 	end.style.display = "block";
 	end.width = 1200;
 	end.height = 600;
@@ -227,7 +258,7 @@ function endgame()
 	ctx.font = '40px Calibri';
   ctx.fillText(score,385,102);
   ctx.fillStyle = "aqua";
-  ctx.fillText("not featured yet",385,150);
+  ctx.fillText(gamelength + " seconds",385,150);
   
 }
 

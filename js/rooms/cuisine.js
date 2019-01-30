@@ -44,7 +44,7 @@ cuisine.begin = function ()
 
   var dangerLvl = 0; //goes up to 5 = lose
   var clicksNeeded = 5;
-  var deltaChange = 3000;
+  var deltaChange = 2000;
   var timeSpent=0;
 
   ctx.drawImage(sprite.CookingLeft,boxCook.x,boxCook.y);

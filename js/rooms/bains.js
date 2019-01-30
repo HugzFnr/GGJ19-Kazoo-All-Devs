@@ -15,7 +15,7 @@ bains.playing = false;
 
 var frame = 0;
 var delta = 1000/60; // 60 fps trop ouf
-var robinet;
+
 
 
 bains.init = function()
@@ -27,7 +27,7 @@ rooms.bains.alerte = sound.EventBain;
 
 bains.begin = function()
 {
-
+    var robinet=0;
   //remplissage ON / OFF
   shortcut.add("F",function()
       {
@@ -75,14 +75,16 @@ bains.begin = function()
         context.lineWidth = "4";
         context.strokeStyle = "black";
         context.rect(bains.width-60, 8, 50, 158);
-        context.stroke();
+        context.stroke();     
 
 
         if(frame%15==0 && frame <=1800 && robinet == 1)
         {
-            remplissage+=4;
+            remplissage+=3;
             sound.BruitBaignoire.play();
-        } 
+        }
+        if (robinet==0) context.drawImage(sprite.F1,175 ,1); 
+        else context.drawImage(sprite.F2,175,1);
 
         if(remplissage <= 159) jauge = remplissage;
 

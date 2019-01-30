@@ -37,11 +37,12 @@ couloir.begin = function()
     }
 
 var tabL = [];
-var deltaSpawn = 1300; //1000 is like a lil hard
+var deltaSpawn = 700; //1000 is like a lil hard
 var deltaAnim = 1000/7; 
 var speed = 7;
 var timeSpent=0;
 var anim = 1;
+var tic=0;
 
 var spawn = setInterval(function()
 { //spawn of new legos
@@ -83,11 +84,20 @@ var spawn = setInterval(function()
             nbFails--;
         }
 
-        updateLegos(tabL);
-        ctx.drawImage(sprite.up1,60,20);
-        ctx.drawImage(sprite.down1,60,70);    
+        updateLegos(tabL);  
         timeSpent+=1000/30;
     }
+
+    tic++;
+
+    if(tic%20<=10) {
+        ctx.drawImage(sprite.up1,90,20);
+        ctx.drawImage(sprite.down1,90,70);
+        }
+        else {
+            ctx.drawImage(sprite.up2,90,20);
+            ctx.drawImage(sprite.down2,90,70);
+        }
     
   }, deltaT);
 
