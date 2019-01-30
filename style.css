@@ -1,6 +1,14 @@
 canvas
 {
+	display : inline-block;
+}
 
+a
+{
+	
+	font-family : "Calibri";
+	font-size : 40px;
+	text-align : center;
 }
 
 #invisible
