@@ -154,7 +154,7 @@ manager.playRandGame = function()
 
 manager.wingame = function()
 {
-  addScore(400);
+  manager.addScore(400*1);
   console.log("score :" + score);
 }
 
@@ -194,14 +194,15 @@ function endgame()
 	
 	end.style.display = "block";
 	end.width = 1200;
-	end.height = 1000;
+	end.height = 600;
 	map.style.display = "none";
 	end.style.backgroundImage = "url("+sprite.KevinDabEcranFin.src+")";
 	ctx = end.getContext("2d");
-	ctx.fillStyle = "white";
-	ctx.font = '40px Serif';
-	ctx.fillText(score,520,260);
-	ctx.fillText("mdr j'en ai plus",520,360);
+  ctx.fillStyle="fuchsia";
+	ctx.font = '40px Calibri';
+  ctx.fillText(score,385,102);
+  ctx.fillStyle = "aqua";
+	ctx.fillText("not featured yet",385,150);
 }
 
 

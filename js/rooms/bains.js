@@ -77,7 +77,7 @@ bains.begin = function()
         context.stroke();
 
 
-        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=5;
+        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=3;
 
         if(remplissage <= 159) jauge = remplissage;
 
@@ -89,27 +89,27 @@ bains.begin = function()
         var ctx = bains.ctx;
 
         if(remplissage <= 25)
-            ctx.drawImage(sprite.bainouare, 60, 40 , sprite.bainouare.width/2,sprite.bainouare.height/2);
+            ctx.drawImage(sprite.Bainouare, 60, 40 , sprite.Bainouare.width/2,sprite.Bainouare.height/2);
         
         else
         if(remplissage <= 50 && remplissage >= 25)
-            ctx.drawImage(sprite.bainouare1, 60, 40 , sprite.bainouare1.width/2,sprite.bainouare.height/2);
+            ctx.drawImage(sprite.Bainouare1, 60, 40 , sprite.Bainouare1.width/2,sprite.Bainouare.height/2);
 
         
         else if (remplissage <= 140 && remplissage > 50)
 
-            ctx.drawImage(sprite.bainouare2, 60, 40 , sprite.bainouare2.width/2,sprite.bainouare.height/2);
+            ctx.drawImage(sprite.Bainouare2, 60, 40 , sprite.Bainouare2.width/2,sprite.Bainouare.height/2);
         
         else if (remplissage > 140 && remplissage <= 160)
         {       
-            ctx.drawImage(sprite.bainouare3, 60, 40 , sprite.bainouare3.width/2,sprite.bainouare.height/2);
+            ctx.drawImage(sprite.Bainouare3, 60, 40 , sprite.Bainouare3.width/2,sprite.Bainouare.height/2);
             bains.end();
             manager.wingame();
         }
 
         else if (remplissage > 160)
         {
-            ctx.drawImage(sprite.bainouare4, 60, 40 , sprite.bainouare4.width/2,sprite.bainouare.height/2);
+            ctx.drawImage(sprite.Bainouare4, 60, 40 , sprite.Bainouare4.width/2,sprite.Bainouare.height/2);
             bains.end();
             manager.loosegame();
 

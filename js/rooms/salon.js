@@ -187,7 +187,7 @@ salon.begin = function()
                 context.drawImage(sprite.VasePete, tableau[j].x , tableau[j].y, sprite.VasePete.width/3, sprite.VasePete.height/3);
 
 
-                if(j==14 || vasesCasses == 3)
+                if(j==14 || vasesCasses == 2)
                 {
                     salon.end();
                     manager.loosegame();

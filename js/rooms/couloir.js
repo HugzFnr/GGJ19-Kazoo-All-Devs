@@ -37,7 +37,7 @@ couloir.begin = function()
     }
 
 var tabL = [];
-var deltaSpawn = 1000; //1000 is like a lil hard
+var deltaSpawn = 1300; //1000 is like a lil hard
 var deltaAnim = 1000/7; 
 var speed = 7;
 var timeSpent=0;

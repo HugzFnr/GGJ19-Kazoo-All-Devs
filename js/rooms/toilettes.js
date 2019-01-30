@@ -23,7 +23,7 @@ toilettes.answered;
 toilettes.begin = function()
 {
   toilettes.playing = true;
-  toilettes.life = 3;
+  toilettes.life = 2;
 
   var cvs = toilettes.cvs;
   var ctx = cvs.getContext("2d");
