@@ -173,7 +173,7 @@ manager.addEntropy = function(e)
   entropy += e;
   draw.entropy();
 
-	if(entropy >= 100)
+	if(entropy >= 10)
 	{
 		endgame();
 	}
