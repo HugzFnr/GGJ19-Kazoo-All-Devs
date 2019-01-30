@@ -77,7 +77,7 @@ bains.begin = function()
         context.stroke();
 
 
-        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=3;
+        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=4;
 
         if(remplissage <= 159) jauge = remplissage;
 

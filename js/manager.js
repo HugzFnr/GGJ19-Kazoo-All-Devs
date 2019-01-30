@@ -136,7 +136,7 @@ manager.missed = function(name)
   room.ctx.clearRect(0,0,room.width,room.height);
   room.cvs.onclick = null;
   room.cvs.style.backgroundColor = "";
-  manager.addEntropy(10);
+  manager.addEntropy(increaseMissed);
 
 }
 
@@ -160,7 +160,7 @@ manager.wingame = function()
 
 manager.loosegame = function()
 {
-  manager.addEntropy(6);
+  manager.addEntropy(increaseFailed);
 }
 
 manager.missgame = function()
@@ -173,7 +173,7 @@ manager.addEntropy = function(e)
   entropy += e;
   draw.entropy();
 
-	if(entropy >= 10)
+	if(entropy >= 100)
 	{
 		endgame();
 	}

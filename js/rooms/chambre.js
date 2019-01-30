@@ -45,7 +45,7 @@ chambre.begin = function()
 
   var delta = 1000/60; // 60 fps trop ouf
   var frame = 0;
-  chambre.timer = setInterval(function()
+  chambre.loop = setInterval(function()
   {
     frame ++;
     //affiche kevin
@@ -215,6 +215,7 @@ chambre.end = function(win)
   chambre.playing = false;
   clearTimeout(chambre.timer);
   clearTimeout(chambre.timerMax);
+  clearInterval(chambre.loop);
   chambre.theme.pause();
 
   if (win==true) manager.wingame();
