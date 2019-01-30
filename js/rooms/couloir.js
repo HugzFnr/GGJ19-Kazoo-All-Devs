@@ -79,6 +79,7 @@ var spawn = setInterval(function()
 
         if (checkAllColli(tabL))
         {
+            sound.BruitDouleur.play();
             nbFails--;
         }
 

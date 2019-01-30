@@ -41,6 +41,7 @@ bains.begin = function()
   shortcut.add("F",function()
       {
           if(bains.playing)robinet = 0;
+          sound.BruitBaignoire.pause();
       },{
           'type':'keyup',
           'propagate':false,
@@ -77,7 +78,11 @@ bains.begin = function()
         context.stroke();
 
 
-        if(frame%15==0 && frame <=1800 && robinet == 1) remplissage+=4;
+        if(frame%15==0 && frame <=1800 && robinet == 1)
+        {
+            remplissage+=4;
+            sound.BruitBaignoire.play();
+        } 
 
         if(remplissage <= 159) jauge = remplissage;
 

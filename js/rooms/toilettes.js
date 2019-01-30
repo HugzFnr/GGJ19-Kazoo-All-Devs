@@ -154,6 +154,7 @@ toilettes.begin = function()
   function press(letter)
   {
     letter= letter.toUpperCase();
+    sound.BruitVentouse.play();
     if(toilettes.playing && toilettes.answered == false)
     {
         if(letter == toilettes.KEY)
@@ -237,7 +238,6 @@ toilettes.end = function(win)
   } 
   else 
   {
-    ctx.fillStyle="red";
     manager.loosegame("toilettes");
   }
   

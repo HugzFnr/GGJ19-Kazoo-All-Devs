@@ -207,7 +207,15 @@ manager.addScore = function(s)
 function endgame()
 {
 
-	mutePage();
+  mutePage();
+  
+  sound.GameOverEntropie.play();
+  setTimeout(function()
+  {
+    muteMe(sound.GameOverEntropie);
+    sound.GameOverContinue.play();
+    console.log("switch");
+  },6500);	
 	
 	end.style.display = "block";
 	end.width = 1200;
@@ -219,7 +227,8 @@ function endgame()
 	ctx.font = '40px Calibri';
   ctx.fillText(score,385,102);
   ctx.fillStyle = "aqua";
-	ctx.fillText("not featured yet",385,150);
+  ctx.fillText("not featured yet",385,150);
+  
 }
 
 
@@ -236,5 +245,5 @@ function mutePage() {
         audios = document.querySelectorAll("audio");
 
     [].forEach.call(videos, function(video) { muteMe(video); });
-    [].forEach.call(audios, function(audio) { muteMe(audio); });
+    [].forEach.call(audios, function(audio) { if ((audio != sound.GameOverEntropie) && (audio != sound.GameOverContinue)) muteMe(audio);});
 }

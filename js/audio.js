@@ -1,6 +1,9 @@
 var audio = {},sound = {},songs={};
 
-audio.list = ["BruitBaignoire","BruitHelp","BruitPleure","BruitVaseCassé","BruitVentouse","EventBain","EventCuisine","EventSalon","EventToilet","Gameover2","GameOverContinue","GameOverEntropie","GameOvereventdynam","musicBain","musicChambre","musicCouloir","musicCuisine","musicIntrokazoo","musicNOEVENT","musicNoEventKAZOO","musicSalon","musicToilettes"];
+audio.list = ["BruitBaignoire","BruitHelp","BruitPleure","BruitVaseCassé","BruitVentouse","EventBain",
+"EventCuisine","EventSalon","EventToilet","Gameover2","GameOverContinue","GameOverEntropie","GameOvereventdynam",
+"musicBain","musicChambre","musicCouloir","musicCuisine","musicIntrokazoo","musicNOEVENT","musicNoEventKAZOO",
+"musicSalon","musicToilettes","BruitDouleur"];
 audio.songs = []; //Songs : Quand on en joue une nouvelle, on éteint l'ancienne
 audio.init = function(callb)
 {

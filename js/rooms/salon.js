@@ -177,6 +177,7 @@ salon.begin = function()
             if(tableau[j].y >= salon.height - hauteurVase && tableau[j].gravite == 2)
             {
                 vasesCasses++;
+                sound.BruitVaseCassé.play();
             }
 
             if(tableau[j].y >= salon.height - hauteurVase)
@@ -209,7 +210,6 @@ salon.begin = function()
 
 
 
-            if(!salon.playing) salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
         }
 
 
@@ -221,8 +221,10 @@ salon.end = function(win) {
 
     clearInterval(salon.timer);
 
-    if (win) manager.win("salon");
-    else manager.win("salon");
+    context.clearRect(0,0,2000,2000);
+
+    if (win) manager.wingame("salon");
+    else manager.loosegame("salon");
 
     salon.playing = false;
 
