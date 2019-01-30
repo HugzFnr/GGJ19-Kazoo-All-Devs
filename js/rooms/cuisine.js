@@ -18,7 +18,7 @@ var cw = cuisine.width;
 var ch = cuisine.height;
 
 //Le canvas
-cuisine.cvs;
+var cvs = cuisine.cvs;
 cuisine.playing = false;
 
 var boxCook = {
@@ -108,12 +108,18 @@ function endGame(end)
     clearInterval(heatup);
     clearInterval(frame);
     cuisine.cvs.onclick = null;
-    ctx.clearRect(0,0,1000,1000);
+
     cuisine.playing = false;
     cuisine.theme.pause();
 
-    if (end=="DEFEAT") manager.loosegame();
-    else manager.wingame();
+    if (end=="DEFEAT") 
+    {
+        manager.loosegame("cuisine");
+    }
+    else 
+    {
+        manager.wingame("cuisine");
+    }
 }
 
 }

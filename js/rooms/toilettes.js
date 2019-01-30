@@ -227,12 +227,18 @@ toilettes.end = function(win)
   clearTimeout(toilettes.timerMax);
   clearTimeout(toilettes.timer);
 
-  toilettes.ctx.clearRect(0,0,toilettes.cvs.width,toilettes.cvs.height),
   toilettes.playing = false;
 
   toilettes.theme.pause();
 
-  if (win==true) manager.wingame();
-  else manager.loosegame();
+  if (win==true) 
+  {
+    manager.wingame("toilettes");
+  } 
+  else 
+  {
+    ctx.fillStyle="red";
+    manager.loosegame("toilettes");
+  }
   
 }

@@ -222,7 +222,11 @@ chambre.end = function(win)
 
   if (win==true) 
   {
-    manager.wingame();
+    manager.wingame("chambre");
   }
-  else manager.loosegame();
+  else 
+  {  
+    manager.loosegame("chambre");
+  }
+
 }

@@ -89,9 +89,9 @@ salon.begin = function()
     });
 
 
-    var canvas = salon.cvs;
+    var cvs = salon.cvs;
 
-    var context = salon.context =  canvas.getContext("2d");
+    var context = salon.context =  cvs.getContext("2d");
 
     //context.fillRect(x, y, largeurVase, hauteurVase);
     context.drawImage(sprite.Vase, x, y, largeurVase, hauteurVase);
@@ -105,7 +105,7 @@ salon.begin = function()
 
    salon.timer = setInterval(function()
     {
-        context.clearRect(0,0, canvas.width, canvas.height);
+        context.clearRect(0,0, cvs.width, cvs.height);
         frame++;
         
         //affichage fleches UI
@@ -163,8 +163,7 @@ salon.begin = function()
 
                     if(j==14)
                     {
-                        salon.end();
-                        manager.wingame();
+                        salon.end(true);
                     } 
                 }
             else
@@ -189,8 +188,7 @@ salon.begin = function()
 
                 if(j==14 || vasesCasses == 2)
                 {
-                    salon.end();
-                    manager.loosegame();
+                    salon.end(false);
                 } 
             }
 
@@ -217,16 +215,18 @@ salon.begin = function()
 
 
     }, delta);
-    }
+    
 
-salon.end = function(){
+salon.end = function(win) {
 
     clearInterval(salon.timer);
 
-    salon.context.clearRect(0,0,salon.cvs.width,salon.cvs.height);
+    if (win) manager.win("salon");
+    else manager.win("salon");
 
     salon.playing = false;
 
     salon.theme.pause();
 
+}
 }

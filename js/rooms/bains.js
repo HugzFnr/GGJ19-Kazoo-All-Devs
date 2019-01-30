@@ -86,7 +86,7 @@ bains.begin = function()
         context.fillRect(bains.width-58, bains.height - 16 - jauge, 46, jauge);
         context.fillStyle = "black";
 
-        var ctx = bains.ctx;
+        var ctx = context;
 
         if(remplissage <= 25)
             ctx.drawImage(sprite.Bainouare, 60, 40 , sprite.Bainouare.width/2,sprite.Bainouare.height/2);
@@ -103,24 +103,27 @@ bains.begin = function()
         else if (remplissage > 140 && remplissage <= 160)
         {       
             ctx.drawImage(sprite.Bainouare3, 60, 40 , sprite.Bainouare3.width/2,sprite.Bainouare.height/2);
-            bains.end();
-            manager.wingame();
+            bains.end(true);
         }
 
         else if (remplissage > 160)
         {
             ctx.drawImage(sprite.Bainouare4, 60, 40 , sprite.Bainouare4.width/2,sprite.Bainouare.height/2);
-            bains.end();
-            manager.loosegame();
+            bains.end(false);
 
         }    
 
         if(frame >= 1800)
         {
-            bains.end();
+            
             if(remplissage < 140 || remplissage >160)
-                manager.loosegame();
-            else manager.wingame();
+            {
+                bains.end(false);
+            }                
+            else 
+            {
+                bains.end(true);
+            }
         }
 
         if(!bains.playing) bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
@@ -129,12 +132,14 @@ bains.begin = function()
 
 }
 
-bains.end = function(){
+bains.end = function(win){
     clearInterval(bains.timer);
 
     bains.playing = false;
-    bains.context.clearRect(0,0,bains.cvs.width,bains.cvs.height);
 
     bains.theme.pause();
     bains.playing = false
+    
+    if (win) manager.wingame("bains");
+    else manager.loosegame("bains");
 }

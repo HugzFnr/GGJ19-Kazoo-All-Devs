@@ -140,6 +140,20 @@ manager.missed = function(name)
 
 }
 
+manager.blink = function(name,win)
+{
+  var room = rooms[name];
+  console.log(rooms +" la room : ",rooms[name]);
+   
+  if (win) room.ctx.fillStyle = "lime";
+  else room.ctx.fillStyle = "red";
+  room.ctx.fillRect(0,0,room.width,room.height);
+  setTimeout(function(){
+    room.ctx.clearRect(0,0,room.width,room.height);
+  },500);
+  console.log("ou est le rect?");
+}
+
 
 manager.playRandGame = function()
 {
@@ -152,14 +166,17 @@ manager.playRandGame = function()
   }
 }
 
-manager.wingame = function()
+manager.wingame = function(name)
 {
   manager.addScore(400*1);
+  manager.blink(name,true);
   console.log("score :" + score);
 }
 
-manager.loosegame = function()
+manager.loosegame = function(name)
 {
+
+  manager.blink(name,false);
   manager.addEntropy(increaseFailed);
 }
 
