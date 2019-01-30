@@ -52,7 +52,7 @@ toilettes.begin = function()
 
   var delta = 1000/60; // 60 fps trop ouf
   var frame = 0;
-  toilettes.timer = setInterval(function()
+  toilettes.loop = setInterval(function()
   {
     if(toilettes.playing)
     {
@@ -223,9 +223,13 @@ toilettes.begin = function()
 
 toilettes.end = function(win)
 {
+  clearInterval(toilettes.loop);
+  clearTimeout(toilettes.timerMax);
+  clearTimeout(toilettes.timer);
 
   toilettes.ctx.clearRect(0,0,toilettes.cvs.width,toilettes.cvs.height),
   toilettes.playing = false;
+
   toilettes.theme.pause();
 
   if (win==true) manager.wingame();

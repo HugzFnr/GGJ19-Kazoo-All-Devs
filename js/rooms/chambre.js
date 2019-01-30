@@ -128,8 +128,6 @@ chambre.begin = function()
             error();
 
         }
-
-
         //genQuestion();
       },bigDelta);
     }
@@ -184,7 +182,7 @@ chambre.begin = function()
       }
       else {
 
-        setTimeout(genQuestion,lilDelta);
+        chambre.timer2 = setTimeout(genQuestion,lilDelta);
       }
 
 
@@ -202,7 +200,7 @@ chambre.begin = function()
 
       ctx.strokeStyle = "green";
       ctx.strokeText("V",250,100);
-      setTimeout(genQuestion,lilDelta)
+      chambre.timer3 = setTimeout(genQuestion,lilDelta)
     }
 
 
@@ -211,13 +209,20 @@ chambre.begin = function()
 
 chambre.end = function(win)
 {
-  ctx.clearRect(0,0,chambre.cvs.width,chambre.cvs.height);
-  chambre.playing = false;
   clearTimeout(chambre.timer);
   clearTimeout(chambre.timerMax);
+  clearTimeout(chambre.timer2);
+  clearTimeout(chambre.timer3);
+
   clearInterval(chambre.loop);
   chambre.theme.pause();
+  chambre.playing = false;
 
-  if (win==true) manager.wingame();
+  ctx.clearRect(0,0,chambre.cvs.width,chambre.cvs.height);
+
+  if (win==true) 
+  {
+    manager.wingame();
+  }
   else manager.loosegame();
 }
