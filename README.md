@@ -1,4 +1,4 @@
-#ParEntropy
+##ParEntropy
 
 Our game for the Global Game Jam 2019.
 
