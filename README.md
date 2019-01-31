@@ -1,6 +1,6 @@
 ## ParEntropy
 
-Our game for the **Global Game Jam 2019**.
+Our game for the **Global Game Jam 2019** (made in less than 48hours and fixed a bit afterwards).
 
 
 Play as Dominique, an overwhelmed parent, and try to save the house from entropy and mayhem the longest you can ! Then try again and beat your score !!
