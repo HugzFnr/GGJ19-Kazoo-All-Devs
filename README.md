@@ -1,6 +1,6 @@
-##ParEntropy
+## ParEntropy
 
-Our game for the Global Game Jam 2019.
+Our game for the **Global Game Jam 2019**.
 
 
 Play as Dominique, an overwhelmed parent, and try to save the house from entropy and mayhem the longest you can ! Then try again and beat your score !!
@@ -13,13 +13,11 @@ P.S. : you may need more than 2 arms ;)
 
 
 
+### Credits
 
+**Game designers and developpers :** Younès RABII, Guillaume GROSSE, Hugo FOURNIER
 
-**Credits**
+**Music and sound designer :** Roxane Pilot
 
-Game designers and developpers : Younès RABII, Guillaume GROSSE, Hugo FOURNIER
-
-Music and sound designer : Roxane Pilot
-
-2D Lead Artist : Mael NUBLAT
+**2D Lead Artist :** Mael NUBLAT
 
