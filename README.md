@@ -21,4 +21,4 @@ P.S. : you may need more than 2 arms ;) (solo parenting is hard)
 
 **2D Lead Artist :** Mael NUBLAT
 
-## More about the project : https://globalgamejam.org/2019/games/parentropy
+### More about the project : https://globalgamejam.org/2019/games/parentropy
