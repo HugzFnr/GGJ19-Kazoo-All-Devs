@@ -26,6 +26,8 @@ P.S. : you may need more than 2 arms ;) (solo parenting is hard)
 
 ### Demonstration
 
-Here is a  long video demonstration of the game that I commented in french : 
+You can play it directly on your bowser on this link : https://hugzfnr.github.io/GGJ19-Kazoo-All-Devs/
+
+But if you are a bit lost, here is a 2 minute-ish long video demonstration of the game that I commented in french and might help you : https://youtu.be/ctcIIJ-dBVg
 One day I shall subtitle it in english, promised.
 
