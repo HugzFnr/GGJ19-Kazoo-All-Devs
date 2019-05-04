@@ -15,7 +15,7 @@ P.S. : you may need more than 2 arms ;) (solo parenting is hard)
 
 ### Credits
 
-**Game designers and developpers :** Younès RABII, Guillaume GROSSE, Hugo FOURNIER
+**Game designers and developpers :** Pyrofoux, Guillaume GROSSE, HugzFnr
 
 **Music and sound designer :** Roxane Pilot
 
