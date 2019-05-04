@@ -1,6 +1,6 @@
 var audio = {},sound = {},songs={};
 
-audio.list = ["BruitBaignoire","BruitHelp","BruitPleure","BruitVaseCassé","BruitVentouse","EventBain",
+audio.list = ["BruitBaignoire","BruitHelp","BruitPleure","BruitVaseCasse","BruitVentouse","EventBain",
 "EventCuisine","EventSalon","EventToilet","Gameover2","GameOverContinue","GameOverEntropie","GameOvereventdynam",
 "musicBain","musicChambre","musicCouloir","musicCuisine","musicIntrokazoo","musicNOEVENT","musicNoEventKAZOO",
 "musicSalon","musicToilettes","BruitDouleur"];
